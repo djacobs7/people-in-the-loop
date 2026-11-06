@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>People in the Loop</title>
+<link rel="alternate" type="application/rss+xml" href="feed.xml">
+<style>
+  :root { --bg:#14212b; --fg:#f5f0e6; --muted:#a9b4bc; --accent:#f2a959; --card:#1c2e3b; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.55 -apple-system, system-ui, sans-serif; }
+  main { max-width:640px; margin:0 auto; padding:32px 16px 64px; }
+  header { display:flex; gap:20px; align-items:center; }
+  header img { width:120px; height:120px; border-radius:12px; }
+  h1 { font-family:Georgia, serif; margin:0; font-size:32px; }
+  .by { color:var(--accent); margin:4px 0 0; letter-spacing:.08em; font-size:14px; }
+  .subscribe { background:var(--card); border-radius:12px; padding:16px 18px; margin:28px 0; }
+  .subscribe h2 { font-size:17px; margin:0 0 8px; }
+  .row { display:flex; gap:8px; }
+  .row input { flex:1; min-width:0; font:inherit; font-size:14px; padding:8px 10px; border-radius:8px; border:1px solid #3a4f5e; background:var(--bg); color:var(--fg); }
+  button { font:inherit; font-size:14px; padding:8px 14px; border-radius:8px; border:0; background:var(--accent); color:#14212b; font-weight:600; cursor:pointer; }
+  ul { padding-left:20px; margin:10px 0 0; color:var(--muted); font-size:15px; }
+  a { color:var(--accent); }
+  article h2 { font-family:Georgia, serif; font-size:22px; margin:0; }
+  .meta { color:var(--muted); margin:2px 0 12px; font-size:14px; }
+  audio { width:100%; }
+</style></head>
+<body><main>
+<header><img src="cover.jpg" alt=""><div><h1>People in the Loop</h1><p class="by">ELANA &amp; DANIEL</p></div></header>
+<p>A therapist and an AI developer, friends since childhood, talk about what AI means for mental health: where it helps, where it fails, and what it can&#x27;t replace.</p>
+<section class="subscribe">
+  <h2>Listen in your podcast app</h2>
+  <div class="row"><input id="u" readonly value="https://djacobs7.github.io/people-in-the-loop/feed.xml"><button onclick="navigator.clipboard.writeText(document.getElementById('u').value);this.textContent='Copied'">Copy</button></div>
+  <ul>
+    <li><a href="podcast://djacobs7.github.io/people-in-the-loop/feed.xml">Open in Apple Podcasts</a> (on iPhone or Mac), or Library → ⋯ → Follow a Show by URL, and paste</li>
+    <li><a href="overcast://x-callback-url/add?url=https://djacobs7.github.io/people-in-the-loop/feed.xml">Open in Overcast</a>, or + → Add URL</li>
+    <li>Pocket Casts: Discover → paste the link into search</li>
+  </ul>
+</section>
+<article>
+  <h2>Ep 1 · Can AI be your therapist?</h2>
+  <p class="meta">November 6, 2026 · 18 min</p>
+  <audio controls preload="none" src="episodes/ep1-can-ai-be-your-therapist.mp3"></audio>
+  <p>A therapist and an AI developer, friends since childhood, argue about whether AI is coming for mental health. Elana explains where chatbots genuinely help (logic-based work like CBT, practice between sessions, people too nervous to see a human) and where they&#x27;re dangerous: they agree with you when a good therapist would call you out, and they miss real risk. Daniel weighs in from the builder&#x27;s side on training, privacy (&quot;everything leaks to a megacorporation&quot;), and what we owe kids. They end on what AI may never do: be a human who cares about you.</p>
+</article>
+</main></body></html>

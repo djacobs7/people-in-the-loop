@@ -1,0 +1,20 @@
+{
+  "title": "People in the Loop",
+  "author": "Elana & Daniel",
+  "email": "peopleintheloop@gmail.com",
+  "description": "A therapist and an AI developer, friends since childhood, talk about what AI means for mental health: where it helps, where it fails, and what it can't replace.",
+  "baseUrl": "https://djacobs7.github.io/people-in-the-loop",
+  "language": "en-us",
+  "category": "Health & Fitness",
+  "subcategory": "Mental Health",
+  "episodes": [
+    {
+      "number": 1,
+      "title": "Can AI be your therapist?",
+      "source": "exports/ep1-can-ai-be-your-therapist-final.mp3",
+      "file": "ep1-can-ai-be-your-therapist.mp3",
+      "date": "2026-11-06",
+      "description": "A therapist and an AI developer, friends since childhood, argue about whether AI is coming for mental health. Elana explains where chatbots genuinely help (logic-based work like CBT, practice between sessions, people too nervous to see a human) and where they're dangerous: they agree with you when a good therapist would call you out, and they miss real risk. Daniel weighs in from the builder's side on training, privacy (\"everything leaks to a megacorporation\"), and what we owe kids. They end on what AI may never do: be a human who cares about you."
+    }
+  ]
+}

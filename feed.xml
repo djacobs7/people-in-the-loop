@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>People in the Loop</title>
+    <link>https://djacobs7.github.io/people-in-the-loop/</link>
+    <atom:link href="https://djacobs7.github.io/people-in-the-loop/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>A therapist and an AI developer, friends since childhood, talk about what AI means for mental health: where it helps, where it fails, and what it can't replace.</description>
+    <language>en-us</language>
+    <itunes:author>Elana &amp; Daniel</itunes:author>
+    <itunes:owner><itunes:name>Elana &amp; Daniel</itunes:name><itunes:email>peopleintheloop@gmail.com</itunes:email></itunes:owner>
+    <itunes:image href="https://djacobs7.github.io/people-in-the-loop/cover.jpg"/>
+    <image><url>https://djacobs7.github.io/people-in-the-loop/cover.jpg</url><title>People in the Loop</title><link>https://djacobs7.github.io/people-in-the-loop/</link></image>
+    <itunes:category text="Health &amp; Fitness"><itunes:category text="Mental Health"/></itunes:category>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <itunes:block>Yes</itunes:block>
+    <item>
+      <title>Can AI be your therapist?</title>
+      <description>A therapist and an AI developer, friends since childhood, argue about whether AI is coming for mental health. Elana explains where chatbots genuinely help (logic-based work like CBT, practice between sessions, people too nervous to see a human) and where they're dangerous: they agree with you when a good therapist would call you out, and they miss real risk. Daniel weighs in from the builder's side on training, privacy ("everything leaks to a megacorporation"), and what we owe kids. They end on what AI may never do: be a human who cares about you.</description>
+      <enclosure url="https://djacobs7.github.io/people-in-the-loop/episodes/ep1-can-ai-be-your-therapist.mp3" length="21833404" type="audio/mpeg"/>
+      <guid isPermaLink="false">people-in-the-loop-ep1</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 +0000</pubDate>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>0:18:12</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+  </channel>
+</rss>
