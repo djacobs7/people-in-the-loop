@@ -31,6 +31,8 @@
   --elana-ink: #A93E26;    /* text, 5.6:1 */
   --daniel: #4E63D6;
   --daniel-ink: #3747B0;   /* text, 7.4:1 */
+  --play: #C44B2D;         /* the one thing to press: white on it is 4.9:1 */
+  --on-play: #FFFFFF;
   --serif: "Instrument Serif", Georgia, serif;
   --sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -41,6 +43,7 @@
   :root {
     --paper: #1A1614; --glow: rgba(255, 130, 95, 0.12); --ink: #F3EBE3; --muted: #B4A79C; --rule: #3A312C; --wave: #6B5F57;
     --elana: #FF8C6E; --elana-ink: #FFA58C; --daniel: #8D9CFF; --daniel-ink: #A9B4FF;
+    --play: #FF8C6E; --on-play: #1A1614;
   }
 }
 * { box-sizing: border-box; }
@@ -112,8 +115,18 @@ button { font: inherit; color: inherit; }
 .ring-wrap { position: relative; width: min(100%, 380px); aspect-ratio: 1; justify-self: center; touch-action: none; cursor: pointer; border-radius: 50%; }
 .ring-wrap canvas { width: 100%; height: 100%; display: block; }
 .ring-center { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 10px; pointer-events: none; }
-.play { pointer-events: auto; width: 84px; height: 84px; border-radius: 50%; border: 0; background: var(--ink); color: var(--paper); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 10px 30px -12px rgba(60, 30, 20, 0.45); }
-.play svg { width: 28px; height: 28px; fill: currentColor; }
+.play { position: relative; pointer-events: auto; width: 100px; height: 100px; border-radius: 50%; border: 0; background: var(--play); color: var(--on-play); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 14px 36px -10px color-mix(in srgb, var(--play) 75%, transparent); transition: transform 0.15s; }
+.play:hover { transform: scale(1.04); }
+.play svg { width: 32px; height: 32px; fill: currentColor; }
+.play::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid var(--play); opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .player:not(.playing):not(.started) .play::after { animation: call 2.6s ease-out infinite; }
+}
+@keyframes call { 0% { transform: scale(1); opacity: 0.55; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
+.cta { margin-top: 26px; min-height: 56px; padding: 0 26px 0 20px; gap: 12px; border: 0; background: var(--play); color: var(--on-play); font: 600 1.0625rem/1 var(--sans); box-shadow: 0 12px 30px -12px color-mix(in srgb, var(--play) 80%, transparent); }
+.cta:hover { background: var(--play); color: var(--on-play); filter: brightness(1.06); }
+.cta svg { width: 18px; height: 18px; fill: currentColor; }
+.cta span { font: 400 0.875rem/1 var(--mono); opacity: 0.85; }
 .play .i-pause, .playing .play .i-play { display: none; }
 .playing .play .i-pause { display: block; }
 .play .i-play { margin-left: 4px; }
@@ -177,15 +190,12 @@ button { font: inherit; color: inherit; }
   <div>
     <h1 class="title">People<br> <i>in the</i> Loop</h1>
     <p class="lede"><span class="name-serif elana">Elana</span> is a therapist. <span class="name-mono daniel">Daniel</span> builds AI. They’ve known each other since they were three. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.</p>
+    <button class="pill cta" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l15-8.5z"/></svg><b class="cta-label" style="font-weight:inherit">Play episode 1</b> <span>18 min</span></button>
   </div>
   <figure>
     <div class="hero-art"><canvas id="hero-loops" aria-hidden="true"></canvas></div>
   </figure>
 </section>
-
-<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-<figure class="quote"><blockquote>“AI, at least right now, will fall into that trap of agreeing… whereas a good human therapist might be able to <span class="circled">call you out<svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M9 24 C5 11 34 3 60 4 C86 5 99 14 97 24 C95 35 62 39 38 37 C14 35 1 29 4 19 C6 11 20 6 33 5"/></svg></span> on that.”</blockquote><figcaption class="label"><span class="name-serif elana">Elana</span>, mental health therapist<br>from episode 1</figcaption></figure>
 
 <div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 
@@ -219,6 +229,10 @@ button { font: inherit; color: inherit; }
   </div>
 </article>
 </section>
+
+<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+<figure class="quote"><blockquote>“AI, at least right now, will fall into that trap of agreeing… whereas a good human therapist might be able to <span class="circled">call you out<svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M9 24 C5 11 34 3 60 4 C86 5 99 14 97 24 C95 35 62 39 38 37 C14 35 1 29 4 19 C6 11 20 6 33 5"/></svg></span> on that.”</blockquote><figcaption class="label"><span class="name-serif elana">Elana</span>, mental health therapist<br>from episode 1</figcaption></figure>
 
 <div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 
@@ -550,6 +564,12 @@ const LOOP_DATA = {"hosts":{"elana":{"low":[0.001,0.001,0.001,0.001,0.002,0.002,
     strands: 22, blend: true, animate: true, alpha: 0.5, lineWidth: 1,
   });
 
+  // the header button follows the newest episode's player
+  const ctaLabel = (p, verb) => {
+    const label = document.querySelector(".cta-label");
+    if (label && p === document.querySelector(".player")) label.textContent = `${verb} episode ${p.dataset.id.replace("ep", "")}`;
+  };
+
   // episodes: the episode wrapped into a loop, filling in as you listen
   const rates = [1, 1.25, 1.5, 2, 0.75];
   document.querySelectorAll(".player").forEach(p => {
@@ -594,7 +614,7 @@ const LOOP_DATA = {"hosts":{"elana":{"low":[0.001,0.001,0.001,0.001,0.002,0.002,
 
     play.onclick = e => { e.stopPropagation(); a.paused ? a.play() : a.pause(); };
     a.addEventListener("play", () => {
-      solo(a); p.classList.add("playing"); play.setAttribute("aria-label", "Pause"); resume.hidden = true;
+      solo(a); p.classList.add("playing", "started"); play.setAttribute("aria-label", "Pause"); resume.hidden = true;
       if ("mediaSession" in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: p.dataset.title, artist: p.dataset.artist, album: p.dataset.album,
@@ -604,7 +624,8 @@ const LOOP_DATA = {"hosts":{"elana":{"low":[0.001,0.001,0.001,0.001,0.002,0.002,
         navigator.mediaSession.setActionHandler("seekforward", () => seek(now() + 30));
       }
     });
-    a.addEventListener("pause", () => { p.classList.remove("playing"); play.setAttribute("aria-label", "Play"); if (a.currentTime > 0) store.set(key, a.currentTime); });
+    a.addEventListener("pause", () => { p.classList.remove("playing"); play.setAttribute("aria-label", "Play"); if (a.currentTime > 0) store.set(key, a.currentTime); ctaLabel(p, "Keep listening to"); });
+    a.addEventListener("play", () => ctaLabel(p, "Pause"));
     a.addEventListener("timeupdate", () => {
       if (!dragging) draw(a.currentTime);
       if (Math.abs(a.currentTime - lastSaved) > 5) { lastSaved = a.currentTime; store.set(key, a.currentTime); }
@@ -627,6 +648,14 @@ const LOOP_DATA = {"hosts":{"elana":{"low":[0.001,0.001,0.001,0.001,0.002,0.002,
     setRate(parseFloat(store.get("pitl-rate")) || 1);
     rate.onclick = () => { const r = rates[(rates.indexOf(a.playbackRate) + 1) % rates.length]; setRate(r); store.set("pitl-rate", r); };
   });
+
+  // the button under the title plays the newest episode
+  const cta = document.querySelector(".cta");
+  if (cta) cta.onclick = () => {
+    const p = document.querySelector(".player"), a = p.querySelector("audio");
+    if (a.paused) a.play(); else a.pause();
+    p.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  };
 
   // the circled phrase draws itself in when it scrolls into view
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
