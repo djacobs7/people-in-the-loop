@@ -2,7 +2,7 @@
   "title": "People in the Loop",
   "author": "Elana & Daniel",
   "email": "peopleintheloop@gmail.com",
-  "description": "A therapist and an AI developer, friends since childhood, talk about what AI means for mental health: where it helps, where it fails, and what it can't replace.",
+  "description": "Elana, a therapist, and Daniel, an AI developer, have known each other since they were three. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.",
   "baseUrl": "https://djacobs7.github.io/people-in-the-loop",
   "language": "en-us",
   "category": "Health & Fitness",
@@ -22,13 +22,23 @@
   "hosts": [
     {
       "name": "Elana",
-      "role": "a therapist",
-      "face": "serif"
+      "role": "Mental health therapist",
+      "face": "serif",
+      "color": "elana",
+      "clip": "voices/elana.mp3",
+      "said": "And I’m Elana. I’m a mental health therapist."
     },
     {
       "name": "Daniel",
-      "role": "an AI developer",
-      "face": "mono"
+      "role": "AI developer",
+      "face": "mono",
+      "color": "daniel",
+      "clip": "voices/daniel.mp3",
+      "said": "I’m Daniel. I’m an AI developer."
     }
-  ]
+  ],
+  "tagline": "Stay curious. Stay informed. Stay in the loop.",
+  "outro": "Have a question for us, or want to tell us how you’re using AI in your own life? We’d love to hear it.",
+  "lede": "{Elana} is a therapist. {Daniel} builds AI. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.",
+  "together": "“We’ve known each other since we were three.”"
 }

@@ -5,253 +5,437 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>People in the Loop</title>
-<meta name="description" content="A therapist and an AI developer, friends since childhood, talk about what AI means for mental health: where it helps, where it fails, and what it can&#x27;t replace.">
+<meta name="description" content="Elana, a therapist, and Daniel, an AI developer, have known each other since they were three. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.">
 <meta property="og:title" content="People in the Loop">
-<meta property="og:description" content="A therapist and an AI developer, friends since childhood, talk about what AI means for mental health: where it helps, where it fails, and what it can&#x27;t replace.">
+<meta property="og:description" content="Elana, a therapist, and Daniel, an AI developer, have known each other since they were three. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.">
 <meta property="og:image" content="https://djacobs7.github.io/people-in-the-loop/cover.jpg">
 <link rel="icon" href="cover.jpg">
 <link rel="apple-touch-icon" href="cover.jpg">
 <link rel="alternate" type="application/rss+xml" title="People in the Loop" href="feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
-/* People in the Loop. Session-notes paper, one highlighter, three voices:
-   grotesk for the show, serif for Elana (the therapist), mono for Daniel (the developer). */
+/* People in the Loop.
+   Warm: Instrument Serif, cream paper, two people's colours, words from their own script.
+   Clinical: Instrument Sans for reading, fine chart rings and figure captions.
+   Technical: small mono labels and loops drawn from real recorded audio. */
 :root {
-  --paper: #EFECE4;
-  --ink: #171614;
-  --muted: #5C5850;   /* 6.1:1 on paper */
-  --rule: #CBC6BB;
-  --wave: #A29C8F;
-  --hi: #DCFF3C;      /* highlighter: fills only, always with --on-hi text */
-  --on-hi: #171614;
-  --display: "Hanken Grotesk", "HK Grotesk", system-ui, sans-serif;
-  --serif: "Source Serif 4", Georgia, serif;
+  --paper: #FBF6F0;
+  --glow: rgba(255, 178, 140, 0.32);
+  --ink: #2B2320;
+  --muted: #6F625A;        /* 5.6:1 on paper */
+  --rule: #E5D8CC;
+  --wave: #B9AAA0;
+  --elana: #E3694B;        /* fills and strokes */
+  --elana-ink: #A93E26;    /* text, 5.6:1 */
+  --daniel: #4E63D6;
+  --daniel-ink: #3747B0;   /* text, 7.4:1 */
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --gutter: max(16px, 4vw);
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --paper: #121210; --ink: #ECE9E1; --muted: #A29E95; --rule: #34322E; --wave: #5A574F; }
+  :root {
+    --paper: #1A1614; --glow: rgba(255, 130, 95, 0.12); --ink: #F3EBE3; --muted: #B4A79C; --rule: #3A312C; --wave: #6B5F57;
+    --elana: #FF8C6E; --elana-ink: #FFA58C; --daniel: #8D9CFF; --daniel-ink: #A9B4FF;
+  }
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.125rem/1.55 var(--serif); font-optical-sizing: auto; }
+body {
+  margin: 0; color: var(--ink); font: 400 1.0625rem/1.6 var(--sans);
+  background: radial-gradient(70% 55% at 88% -8%, var(--glow), transparent 70%), radial-gradient(50% 40% at -10% 40%, var(--glow), transparent 70%), var(--paper);
+  background-color: var(--paper);
+}
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 button { font: inherit; color: inherit; }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
-.kicker { font: 500 0.8125rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.label { font: 400 0.75rem/1.4 var(--mono); letter-spacing: 0.02em; color: var(--muted); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.hl { background: var(--hi); color: var(--on-hi); padding: 0 0.08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.elana { color: var(--elana-ink); }
+.daniel { color: var(--daniel-ink); }
+.name-serif { font-family: var(--serif); font-style: italic; }
+.name-mono { font-family: var(--mono); font-size: 0.86em; letter-spacing: -0.02em; }
+.dot { display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; vertical-align: 0.05em; margin-right: 0.35em; }
+.dot.e { background: var(--elana); } .dot.d { background: var(--daniel); }
+.pill { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--ink); background: none; cursor: pointer; text-decoration: none; font: 500 0.9375rem/1 var(--sans); }
+.pill:hover { background: var(--ink); color: var(--paper); }
+.pill.solid { background: var(--ink); color: var(--paper); }
+.pill.solid:hover { opacity: 0.88; }
 
-/* masthead */
-.top { display: flex; justify-content: space-between; gap: 16px; padding: 18px 0 12px; border-bottom: 2px solid var(--ink); }
+/* a rule with one pen loop in it */
+.loop-rule { display: flex; align-items: flex-end; gap: 0; margin: clamp(56px, 9vw, 112px) 0 0; color: var(--wave); }
+.loop-rule::before, .loop-rule::after { content: ""; flex: 1; border-bottom: 1.5px solid currentColor; margin-bottom: 0.75px; }
+.loop-rule svg { width: 84px; height: 42px; flex: none; overflow: visible; }
+
+/* top */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; }
 .top a { text-decoration: none; }
 .top a:hover { text-decoration: underline; }
 
-/* title: built to read from across the street */
-.title { font: 900 clamp(4.5rem, 0.6rem + 24vw, 15rem)/0.82 var(--display); letter-spacing: -0.05em; margin: clamp(28px, 6vw, 72px) 0 0; }
-.title span { display: block; }
-.title .in { font: italic 400 0.3em/1 var(--serif); letter-spacing: -0.01em; margin: 0.32em 0 0.22em 0.12em; }
-.title .hl { display: inline-block; padding: 0.02em 0.06em 0.1em 0.04em; margin-left: -0.04em; }
-
-/* who */
-.intro { display: grid; gap: 28px; margin: clamp(32px, 6vw, 64px) 0 0; padding-top: 18px; border-top: 1px solid var(--rule); }
-.lede { margin: 0; font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); line-height: 1.45; max-width: 34em; text-wrap: pretty; }
-.cast { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0; }
-.who { margin: 0; }
-.who dt { font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem); line-height: 1.05; }
-.who.serif dt { font-family: var(--serif); font-style: italic; font-weight: 500; }
-.who.mono dt { font-family: var(--mono); font-weight: 500; letter-spacing: -0.04em; }
-.who dd { margin: 6px 0 0; color: var(--muted); font-size: 1rem; }
+/* hero */
+.hero { display: grid; gap: 8px; align-items: center; margin-top: clamp(16px, 4vw, 40px); }
+.hero figure { margin: 8px 0 0; }
+.hero-art { position: relative; aspect-ratio: 1.25; margin: 0 calc(-1 * var(--gutter)); }
+.hero-art canvas { width: 100%; height: 100%; display: block; }
+.title { font: 400 clamp(4rem, 1.6rem + 11vw, 9.5rem)/0.86 var(--serif); letter-spacing: -0.02em; margin: 0; }
+.title i { font-style: italic; font-size: 0.62em; letter-spacing: 0; padding: 0 0.04em; }
+.lede { font: 400 clamp(1.1875rem, 1.05rem + 0.5vw, 1.375rem)/1.5 var(--sans); margin: 22px 0 0; max-width: 31em; text-wrap: pretty; }
+.lede .name-serif { font-size: 1.18em; }
+.hero figcaption { margin: -4px 0 0; text-align: center; }
 @media (min-width: 900px) {
-  .intro { grid-template-columns: 7fr 4fr; gap: var(--gutter); align-items: start; }
-  .cast { grid-template-columns: 1fr; gap: 22px; }
+  .hero { grid-template-columns: 6fr 5fr; gap: var(--gutter); margin-top: 24px; }
+  .hero-art { margin: 0; aspect-ratio: 1.05; }
+  .hero figure { margin: 0; }
 }
 
-/* the cold open, pulled */
-.quote { margin: clamp(56px, 10vw, 128px) 0 0; display: grid; gap: 18px; }
-.quote blockquote { margin: 0; font: 400 clamp(1.75rem, 1rem + 3.2vw, 3.6rem)/1.14 var(--serif); letter-spacing: -0.015em; text-wrap: balance; }
-.quote blockquote::before { content: "\201C"; }
-.quote blockquote::after { content: "\201D"; }
-.quote figcaption { color: var(--muted); font: 500 0.9375rem/1.4 var(--mono); }
-.quote figcaption .serif { font: italic 500 1.25rem/1 var(--serif); color: var(--ink); }
-@media (min-width: 900px) {
-  .quote { grid-template-columns: 2fr 9fr; gap: var(--gutter); align-items: baseline; }
-  .quote figcaption { order: -1; }
-}
+/* the two people */
+.people { display: grid; gap: 40px; margin-top: 28px; }
+.person { display: grid; grid-template-columns: minmax(130px, 200px) 1fr; gap: 6px 20px; align-items: center; }
+.person canvas { width: 100%; aspect-ratio: 1; display: block; grid-row: span 3; }
+.person h3 { margin: 0; font-size: 2.5rem; line-height: 1; font-weight: 400; }
+.person h3.name-mono { font: 500 2rem/1 var(--mono); letter-spacing: -0.05em; }
+.person .role { margin: 0; color: var(--muted); }
+.person .hear { justify-self: start; margin-top: 6px; }
+.person .said { grid-column: 1 / -1; margin: 6px 0 0; }
+.person.playing .hear { background: var(--ink); color: var(--paper); }
+.people-note { margin: 0; font: italic 400 clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem)/1.2 var(--serif); }
+@media (min-width: 760px) { .people { grid-template-columns: 1fr 1fr; } .people-note { grid-column: 1 / -1; } }
+
+/* cold open, pulled */
+.quote { margin: 0; padding-top: clamp(32px, 6vw, 64px); display: grid; gap: 20px; }
+.quote blockquote { margin: 0; font: 400 clamp(2rem, 1.1rem + 3.6vw, 4rem)/1.1 var(--serif); letter-spacing: -0.01em; text-wrap: balance; }
+.circled { position: relative; white-space: nowrap; font-style: italic; margin: 0 0.22em 0 0.16em; }
+.circled svg { position: absolute; left: -0.28em; right: -0.32em; top: -0.12em; bottom: -0.18em; width: calc(100% + 0.6em); height: calc(100% + 0.3em); overflow: visible; pointer-events: none; }
+.circled path { fill: none; stroke: var(--elana); stroke-width: 2.25; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.quote figcaption { color: var(--muted); }
+.quote figcaption .name-serif { font-size: 1.5rem; color: var(--elana-ink); }
+@media (min-width: 900px) { .quote { grid-template-columns: 2fr 9fr; gap: var(--gutter); align-items: baseline; } .quote figcaption { order: -1; } }
 
 /* episodes */
-.section-head { display: flex; justify-content: space-between; align-items: baseline; margin: clamp(56px, 10vw, 120px) 0 0; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
-.ep { display: grid; gap: 14px 24px; padding: 28px 0 36px; border-bottom: 1px solid var(--rule); }
-.ep-no { font: 900 clamp(4.5rem, 3rem + 6vw, 8rem)/0.8 var(--display); letter-spacing: -0.05em; margin: 0; }
-.ep-meta { margin: 10px 0 0; }
-.ep h3 { font: 800 clamp(1.875rem, 1.3rem + 2.4vw, 3.25rem)/1 var(--display); letter-spacing: -0.03em; margin: 0 0 22px; text-wrap: balance; }
-.ep .desc { margin: 22px 0 0; max-width: 36em; text-wrap: pretty; }
-@media (min-width: 900px) {
-  .ep { grid-template-columns: 2fr 9fr; gap: var(--gutter); }
-}
-
-/* player */
-.player { display: grid; grid-template-columns: 56px 1fr; gap: 10px 14px; align-items: center; }
-.play { width: 56px; height: 56px; border: 0; border-radius: 0; background: var(--ink); color: var(--paper); display: grid; place-items: center; cursor: pointer; padding: 0; }
-.play svg { width: 22px; height: 22px; fill: currentColor; }
+.section-title { font: 400 clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem)/1 var(--serif); margin: 0 0 8px; }
+.section-title i { font-size: 0.8em; }
+.ep { display: grid; gap: 22px 48px; padding: 24px 0 8px; }
+.ep-head { margin: 0 0 6px; }
+.ep h3 { font: 400 clamp(2.25rem, 1.5rem + 3vw, 3.75rem)/1 var(--serif); margin: 0 0 18px; text-wrap: balance; }
+.ep .desc { margin: 0; max-width: 34em; text-wrap: pretty; }
+.ring-wrap { position: relative; width: min(100%, 380px); aspect-ratio: 1; justify-self: center; touch-action: none; cursor: pointer; border-radius: 50%; }
+.ring-wrap canvas { width: 100%; height: 100%; display: block; }
+.ring-center { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 10px; pointer-events: none; }
+.play { pointer-events: auto; width: 84px; height: 84px; border-radius: 50%; border: 0; background: var(--ink); color: var(--paper); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 10px 30px -12px rgba(60, 30, 20, 0.45); }
+.play svg { width: 28px; height: 28px; fill: currentColor; }
 .play .i-pause, .playing .play .i-play { display: none; }
 .playing .play .i-pause { display: block; }
-.wave { position: relative; height: 56px; cursor: pointer; touch-action: none; }
-.wave svg { display: block; width: 100%; height: 100%; }
-.wave .bg rect { fill: var(--wave); }
-.wave .fg rect { fill: var(--ink); }
-.wave .ghost { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--ink); opacity: 0; pointer-events: none; }
-.wave:hover .ghost { opacity: 0.35; }
-.controls { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 500 0.875rem/1 var(--mono); }
-.controls .time { min-width: 4.5em; font-variant-numeric: tabular-nums; }
-.controls .time.end { margin-left: auto; text-align: right; color: var(--muted); }
-.controls button { border: 1px solid var(--rule); background: none; padding: 0 10px; min-height: 36px; min-width: 44px; cursor: pointer; font: inherit; }
-.controls button:hover { border-color: var(--ink); }
-.controls .resume { border-color: var(--hi); background: var(--hi); color: var(--on-hi); }
+.play .i-play { margin-left: 4px; }
+.ring-time { font: 500 0.875rem/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--muted); }
+.ring-time b { color: var(--ink); font-weight: 500; }
+.controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px; }
+.controls .pill { min-width: 56px; padding: 0 14px; font: 500 0.875rem/1 var(--mono); }
+.controls .resume { border-color: var(--elana); background: var(--elana); color: #fff; font-family: var(--sans); }
+.controls .resume:hover { opacity: 0.9; background: var(--elana); color: #fff; }
 .controls .resume[hidden] { display: none; }
+@media (min-width: 900px) { .ep { grid-template-columns: 380px 1fr; align-items: center; } }
 
-/* subscribe */
-.listen { margin: clamp(56px, 10vw, 120px) 0 0; border-top: 2px solid var(--ink); padding-top: 22px; display: grid; gap: 20px; }
-.listen h2 { font: 800 clamp(2.25rem, 1.5rem + 3vw, 4rem)/0.95 var(--display); letter-spacing: -0.04em; margin: 0; text-wrap: balance; }
-.listen h2 .serif { font: italic 400 0.62em/1 var(--serif); letter-spacing: -0.01em; }
-.why { margin: 12px 0 0; color: var(--muted); font-size: 1rem; max-width: 30em; }
-.url { display: flex; border: 2px solid var(--ink); }
-.url input { flex: 1; min-width: 0; border: 0; background: none; color: var(--ink); font: 500 0.875rem/1 var(--mono); padding: 14px 12px; }
-.url button { border: 0; border-left: 2px solid var(--ink); background: var(--ink); color: var(--paper); font: 600 0.875rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 0 18px; min-width: 96px; cursor: pointer; }
-.url button.done { background: var(--hi); color: var(--on-hi); }
+/* listen */
+.listen { display: grid; gap: 24px; padding-top: 8px; }
+.listen .why { margin: 14px 0 0; color: var(--muted); max-width: 28em; }
+.url { display: flex; align-items: center; gap: 6px; border: 1.5px solid var(--ink); border-radius: 999px; padding: 5px 5px 5px 18px; background: color-mix(in srgb, var(--paper) 70%, transparent); }
+.url input { flex: 1; min-width: 0; border: 0; background: none; color: var(--ink); font: 400 0.8125rem/1 var(--mono); padding: 10px 0; }
+.url button { border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); font: 500 0.9375rem/1 var(--sans); padding: 0 20px; min-height: 40px; cursor: pointer; }
+.url button.done { background: var(--elana); color: #fff; }
 .apps { list-style: none; margin: 0; padding: 0; }
-.apps li { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--rule); }
-.apps strong { font: 700 1.25rem/1.2 var(--display); letter-spacing: -0.01em; }
-.apps p { grid-column: 1; margin: 0; color: var(--muted); font-size: 1rem; }
-.apps .go { grid-column: 2; grid-row: 1 / span 2; font: 600 0.8125rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--ink); padding: 12px 14px; white-space: nowrap; }
-.apps .go:hover { background: var(--ink); color: var(--paper); }
+.apps > li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.apps strong { font: 400 1.75rem/1.1 var(--serif); }
+.apps > li > p { grid-column: 1; margin: 0; color: var(--muted); font-size: 0.9375rem; }
+.apps .go { grid-column: 2; grid-row: 1 / span 2; min-height: 40px; font-size: 0.875rem; }
+@media (min-width: 900px) { .listen { grid-template-columns: 5fr 6fr; gap: var(--gutter); } .listen > div:last-child { display: grid; gap: 18px; align-content: start; } }
 
 /* step-by-step guide, folded away until asked for */
-.steps-guide { grid-column: 1 / -1; margin-top: 8px; }
-.steps-guide summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 600 0.8125rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.steps-guide { grid-column: 1 / -1; margin-top: 10px; }
+.steps-guide summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 500 0.9375rem/1 var(--sans); }
 .steps-guide summary::-webkit-details-marker { display: none; }
-.steps-guide summary::after { content: "+"; display: grid; place-items: center; width: 22px; height: 22px; border: 2px solid var(--ink); font-size: 0.875rem; }
-.steps-guide[open] summary::after { content: "−"; background: var(--hi); color: var(--on-hi); border-color: var(--hi); }
+.steps-guide summary::before { content: "+"; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ink); font: 400 1rem/1 var(--sans); }
+.steps-guide[open] summary::before { content: "−"; background: var(--elana); color: #fff; border-color: var(--elana); }
 .steps-guide summary span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-.steps { list-style: none; counter-reset: step; margin: 8px 0 0; padding: 0; display: grid; gap: 22px; }
-.steps > li { counter-increment: step; display: grid; grid-template-columns: 2.4rem 1fr; gap: 4px 12px; padding: 0; border: 0; align-items: start; }
-.steps > li::before { content: counter(step, decimal-leading-zero); font: 900 1.5rem/1 var(--display); letter-spacing: -0.04em; padding-top: 2px; }
-.steps p { grid-column: 2; margin: 0; color: var(--ink); font-size: 1.0625rem; }
-.steps b { font-family: var(--display); font-weight: 700; }
+.steps { list-style: none; counter-reset: step; margin: 10px 0 0; padding: 0; display: grid; gap: 22px; }
+.steps > li { counter-increment: step; display: grid; grid-template-columns: 2.2rem 1fr; gap: 4px 12px; align-items: start; }
+.steps > li::before { content: counter(step); font: italic 400 2rem/0.9 var(--serif); color: var(--elana-ink); }
+.steps p { grid-column: 2; margin: 0; }
+.steps b { font-weight: 600; }
 .steps figure { grid-column: 2; margin: 10px 0 0; }
-.steps img { display: block; width: 100%; max-width: 300px; height: auto; border: 1px solid var(--rule); border-radius: 18px; }
-.steps figcaption { margin-top: 8px; color: var(--muted); font: 500 0.8125rem/1.4 var(--mono); max-width: 300px; }
-.steps .mac { color: var(--muted); }
-@media (min-width: 900px) {
-  .listen { grid-template-columns: 5fr 6fr; gap: var(--gutter); }
-  .listen > div:last-child { display: grid; gap: 20px; align-content: start; }
-}
+.steps img { display: block; width: 100%; max-width: 300px; height: auto; border: 1px solid var(--rule); border-radius: 18px; box-shadow: 0 14px 34px -20px rgba(60, 30, 20, 0.5); }
+.steps figcaption { margin-top: 8px; max-width: 300px; }
+.mac { margin: 18px 0 0; color: var(--muted); font-size: 0.9375rem; }
 
-footer { margin: clamp(56px, 10vw, 112px) 0 0; padding: 16px 0 40px; border-top: 2px solid var(--ink); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
-footer a { color: var(--muted); }
-
-@media (prefers-reduced-motion: no-preference) {
-  .wave .ghost { transition: opacity 0.15s; }
-}
+/* footer */
+.sign-off { padding: 8px 0 56px; display: grid; gap: 18px; }
+.sign-off .tag { font: 400 clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem)/1.02 var(--serif); margin: 0; }
+.sign-off .tag i:last-child { color: var(--elana-ink); }
+.sign-off p { margin: 0; max-width: 30em; }
+.sign-off .label a { color: var(--ink); }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header class="top">
-  <span class="kicker">A podcast · Elana &amp; Daniel</span>
-  <a class="kicker" href="#listen">Subscribe ↓</a>
+  <span class="label">a podcast by <span class="elana">Elana</span> &amp; <span class="daniel">Daniel</span></span>
+  <a class="label" href="#listen">listen ↓</a>
 </header>
 
-<h1 class="title" aria-label="People in the Loop"><span>People</span><span class="in">in the</span><span><span class="hl">Loop</span></span></h1>
-
-<section class="intro">
-  <p class="lede">A therapist and an AI developer, friends since childhood, talk about what AI means for mental health: where it helps, where it fails, and what it can&#x27;t replace.</p>
-  <dl class="cast"><div class="who serif"><dt>Elana</dt><dd>a therapist</dd></div><div class="who mono"><dt>Daniel</dt><dd>an AI developer</dd></div></dl>
+<section class="hero">
+  <div>
+    <h1 class="title">People<br> <i>in the</i> Loop</h1>
+    <p class="lede"><span class="name-serif elana">Elana</span> is a therapist. <span class="name-mono daniel">Daniel</span> builds AI. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.</p>
+  </div>
+  <figure>
+    <div class="hero-art"><canvas id="hero-loops" aria-hidden="true"></canvas></div>
+    <figcaption class="label">fig. 1 · <span class="dot e"></span>Elana and <span class="dot d"></span>Daniel, each saying who they are, drawn as loops</figcaption>
+  </figure>
 </section>
 
-<figure class="quote"><blockquote>AI, at least right now, will fall into that trap of agreeing… whereas a good human therapist might be able to <span class="hl">call you out</span> on that.</blockquote><figcaption><span class="serif">Elana</span>, a therapist<br>Ep 01</figcaption></figure>
+<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 
-<div class="section-head"><h2 class="kicker" style="margin:0">Episodes</h2><span class="kicker">1 episode</span></div>
-<article class="ep">
-  <div>
-    <p class="ep-no" aria-hidden="true">01</p>
-    <p class="ep-meta kicker">Nov 6, 2026<br>18 min</p>
+<section aria-labelledby="who">
+  <h2 class="section-title" id="who">Who’s <i>talking</i></h2>
+  <div class="people">
+    <article class="person" data-id="elana" data-name="Elana">
+      <canvas aria-hidden="true"></canvas>
+      <h3 class="name-serif elana">Elana</h3>
+      <p class="role">Mental health therapist</p>
+      <button class="pill hear" type="button">Hear Elana</button>
+      <p class="said label">“And I’m Elana. I’m a mental health therapist.” · 2.8 s, drawn from the recording</p>
+      <audio preload="none" src="voices/elana.mp3"></audio>
+    </article>
+    <article class="person" data-id="daniel" data-name="Daniel">
+      <canvas aria-hidden="true"></canvas>
+      <h3 class="name-mono daniel">Daniel</h3>
+      <p class="role">AI developer</p>
+      <button class="pill hear" type="button">Hear Daniel</button>
+      <p class="said label">“I’m Daniel. I’m an AI developer.” · 1.9 s, drawn from the recording</p>
+      <audio preload="none" src="voices/daniel.mp3"></audio>
+    </article>
+    <p class="people-note">“We’ve known each other since we were three.”</p>
   </div>
+</section>
+
+<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+<figure class="quote"><blockquote>“AI, at least right now, will fall into that trap of agreeing… whereas a good human therapist might be able to <span class="circled">call you out<svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M9 24 C5 11 34 3 60 4 C86 5 99 14 97 24 C95 35 62 39 38 37 C14 35 1 29 4 19 C6 11 20 6 33 5"/></svg></span> on that.”</blockquote><figcaption class="label"><span class="name-serif elana">Elana</span>, mental health therapist<br>from episode 1</figcaption></figure>
+
+<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+<section aria-labelledby="episodes">
+  <h2 class="section-title" id="episodes">Episodes</h2>
+  <article class="ep player" data-id="ep1" data-duration="1091.58"
+     data-title="Can AI be your therapist?" data-artist="Elana &amp; Daniel" data-album="People in the Loop">
   <div>
-    <h3><span class="visually-hidden">Episode 1: </span>Can AI be your therapist?</h3>
-    <div class="player" data-id="ep1" data-duration="1091.58" data-bars="160"
-         data-title="Can AI be your therapist?" data-artist="Elana &amp; Daniel" data-album="People in the Loop">
-      <audio preload="metadata" src="episodes/ep1-can-ai-be-your-therapist.mp3"></audio>
-      <button class="play" type="button" aria-label="Play">
-        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l15-8.5z"/></svg>
-        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h5v18H5zM14 3h5v18h-5z"/></svg>
-      </button>
-      <div class="wave" role="slider" tabindex="0" aria-label="Position in episode" aria-valuemin="0" aria-valuemax="1092" aria-valuenow="0">
-        <svg viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true">
-          <defs><clipPath id="clip-ep1"><rect x="0" y="0" width="0" height="40"/></clipPath></defs>
-          <g class="bg"><rect x="0.18" y="4.44" width="0.64" height="31.12"/><rect x="1.18" y="2.01" width="0.64" height="35.99"/><rect x="2.18" y="1.00" width="0.64" height="38.00"/><rect x="3.18" y="6.74" width="0.64" height="26.52"/><rect x="4.18" y="5.41" width="0.64" height="29.18"/><rect x="5.18" y="1.68" width="0.64" height="36.63"/><rect x="6.18" y="5.62" width="0.64" height="28.77"/><rect x="7.18" y="4.53" width="0.64" height="30.93"/><rect x="8.18" y="2.08" width="0.64" height="35.83"/><rect x="9.18" y="4.91" width="0.64" height="30.17"/><rect x="10.18" y="5.01" width="0.64" height="29.98"/><rect x="11.18" y="5.39" width="0.64" height="29.22"/><rect x="12.18" y="2.46" width="0.64" height="35.07"/><rect x="13.18" y="5.90" width="0.64" height="28.20"/><rect x="14.18" y="4.78" width="0.64" height="30.44"/><rect x="15.18" y="6.97" width="0.64" height="26.07"/><rect x="16.18" y="3.87" width="0.64" height="32.26"/><rect x="17.18" y="7.38" width="0.64" height="25.23"/><rect x="18.18" y="3.17" width="0.64" height="33.67"/><rect x="19.18" y="5.37" width="0.64" height="29.26"/><rect x="20.18" y="7.65" width="0.64" height="24.70"/><rect x="21.18" y="6.42" width="0.64" height="27.17"/><rect x="22.18" y="5.75" width="0.64" height="28.50"/><rect x="23.18" y="5.05" width="0.64" height="29.91"/><rect x="24.18" y="3.96" width="0.64" height="32.07"/><rect x="25.18" y="5.58" width="0.64" height="28.84"/><rect x="26.18" y="5.39" width="0.64" height="29.22"/><rect x="27.18" y="8.43" width="0.64" height="23.14"/><rect x="28.18" y="3.87" width="0.64" height="32.26"/><rect x="29.18" y="4.89" width="0.64" height="30.21"/><rect x="30.18" y="5.41" width="0.64" height="29.18"/><rect x="31.18" y="4.33" width="0.64" height="31.35"/><rect x="32.18" y="3.81" width="0.64" height="32.38"/><rect x="33.18" y="7.38" width="0.64" height="25.23"/><rect x="34.18" y="5.50" width="0.64" height="28.99"/><rect x="35.18" y="8.81" width="0.64" height="22.38"/><rect x="36.18" y="2.88" width="0.64" height="34.24"/><rect x="37.18" y="8.22" width="0.64" height="23.56"/><rect x="38.18" y="3.64" width="0.64" height="32.72"/><rect x="39.18" y="3.70" width="0.64" height="32.60"/><rect x="40.18" y="1.44" width="0.64" height="37.13"/><rect x="41.18" y="4.33" width="0.64" height="31.35"/><rect x="42.18" y="3.43" width="0.64" height="33.14"/><rect x="43.18" y="1.00" width="0.64" height="38.00"/><rect x="44.18" y="2.67" width="0.64" height="34.66"/><rect x="45.18" y="3.95" width="0.64" height="32.11"/><rect x="46.18" y="3.96" width="0.64" height="32.07"/><rect x="47.18" y="3.49" width="0.64" height="33.02"/><rect x="48.18" y="3.17" width="0.64" height="33.67"/><rect x="49.18" y="2.94" width="0.64" height="34.12"/><rect x="50.18" y="4.27" width="0.64" height="31.46"/><rect x="51.18" y="4.40" width="0.64" height="31.20"/><rect x="52.18" y="4.76" width="0.64" height="30.48"/><rect x="53.18" y="6.49" width="0.64" height="27.02"/><rect x="54.18" y="5.60" width="0.64" height="28.80"/><rect x="55.18" y="4.48" width="0.64" height="31.05"/><rect x="56.18" y="5.94" width="0.64" height="28.12"/><rect x="57.18" y="7.84" width="0.64" height="24.32"/><rect x="58.18" y="7.25" width="0.64" height="25.50"/><rect x="59.18" y="2.84" width="0.64" height="34.31"/><rect x="60.18" y="6.40" width="0.64" height="27.21"/><rect x="61.18" y="7.63" width="0.64" height="24.74"/><rect x="62.18" y="1.00" width="0.64" height="38.00"/><rect x="63.18" y="3.36" width="0.64" height="33.29"/><rect x="64.18" y="6.42" width="0.64" height="27.17"/><rect x="65.18" y="3.62" width="0.64" height="32.76"/><rect x="66.18" y="5.92" width="0.64" height="28.16"/><rect x="67.18" y="6.36" width="0.64" height="27.28"/><rect x="68.18" y="1.00" width="0.64" height="38.00"/><rect x="69.18" y="3.66" width="0.64" height="32.68"/><rect x="70.18" y="4.04" width="0.64" height="31.92"/><rect x="71.18" y="5.79" width="0.64" height="28.42"/><rect x="72.18" y="8.26" width="0.64" height="23.48"/><rect x="73.18" y="5.22" width="0.64" height="29.56"/><rect x="74.18" y="7.21" width="0.64" height="25.57"/><rect x="75.18" y="8.33" width="0.64" height="23.33"/><rect x="76.18" y="7.40" width="0.64" height="25.19"/><rect x="77.18" y="7.42" width="0.64" height="25.16"/><rect x="78.18" y="2.39" width="0.64" height="35.23"/><rect x="79.18" y="8.31" width="0.64" height="23.37"/><rect x="80.18" y="3.47" width="0.64" height="33.06"/><rect x="81.18" y="4.34" width="0.64" height="31.31"/><rect x="82.18" y="3.87" width="0.64" height="32.26"/><rect x="83.18" y="5.69" width="0.64" height="28.61"/><rect x="84.18" y="6.38" width="0.64" height="27.25"/><rect x="85.18" y="4.04" width="0.64" height="31.92"/><rect x="86.18" y="1.82" width="0.64" height="36.37"/><rect x="87.18" y="3.07" width="0.64" height="33.86"/><rect x="88.18" y="8.58" width="0.64" height="22.84"/><rect x="89.18" y="6.51" width="0.64" height="26.98"/><rect x="90.18" y="2.84" width="0.64" height="34.31"/><rect x="91.18" y="4.19" width="0.64" height="31.62"/><rect x="92.18" y="2.80" width="0.64" height="34.39"/><rect x="93.18" y="8.05" width="0.64" height="23.90"/><rect x="94.18" y="7.40" width="0.64" height="25.19"/><rect x="95.18" y="6.04" width="0.64" height="27.93"/><rect x="96.18" y="4.50" width="0.64" height="31.01"/><rect x="97.18" y="1.00" width="0.64" height="38.00"/><rect x="98.18" y="4.91" width="0.64" height="30.17"/><rect x="99.18" y="3.34" width="0.64" height="33.33"/><rect x="100.18" y="4.74" width="0.64" height="30.51"/><rect x="101.18" y="5.35" width="0.64" height="29.30"/><rect x="102.18" y="6.32" width="0.64" height="27.36"/><rect x="103.18" y="6.30" width="0.64" height="27.40"/><rect x="104.18" y="5.41" width="0.64" height="29.18"/><rect x="105.18" y="8.22" width="0.64" height="23.56"/><rect x="106.18" y="8.01" width="0.64" height="23.98"/><rect x="107.18" y="8.39" width="0.64" height="23.22"/><rect x="108.18" y="8.18" width="0.64" height="23.64"/><rect x="109.18" y="8.92" width="0.64" height="22.15"/><rect x="110.18" y="7.40" width="0.64" height="25.19"/><rect x="111.18" y="8.12" width="0.64" height="23.75"/><rect x="112.18" y="7.94" width="0.64" height="24.13"/><rect x="113.18" y="7.61" width="0.64" height="24.78"/><rect x="114.18" y="9.23" width="0.64" height="21.55"/><rect x="115.18" y="3.95" width="0.64" height="32.11"/><rect x="116.18" y="7.76" width="0.64" height="24.47"/><rect x="117.18" y="8.12" width="0.64" height="23.75"/><rect x="118.18" y="7.92" width="0.64" height="24.17"/><rect x="119.18" y="3.58" width="0.64" height="32.83"/><rect x="120.18" y="6.66" width="0.64" height="26.68"/><rect x="121.18" y="7.88" width="0.64" height="24.24"/><rect x="122.18" y="8.33" width="0.64" height="23.33"/><rect x="123.18" y="7.86" width="0.64" height="24.28"/><rect x="124.18" y="5.05" width="0.64" height="29.91"/><rect x="125.18" y="2.94" width="0.64" height="34.12"/><rect x="126.18" y="3.77" width="0.64" height="32.45"/><rect x="127.18" y="1.66" width="0.64" height="36.67"/><rect x="128.18" y="2.88" width="0.64" height="34.24"/><rect x="129.18" y="6.57" width="0.64" height="26.87"/><rect x="130.18" y="2.67" width="0.64" height="34.66"/><rect x="131.18" y="8.05" width="0.64" height="23.90"/><rect x="132.18" y="5.71" width="0.64" height="28.58"/><rect x="133.18" y="1.44" width="0.64" height="37.13"/><rect x="134.18" y="4.00" width="0.64" height="32.00"/><rect x="135.18" y="2.98" width="0.64" height="34.05"/><rect x="136.18" y="7.55" width="0.64" height="24.89"/><rect x="137.18" y="7.40" width="0.64" height="25.19"/><rect x="138.18" y="8.09" width="0.64" height="23.83"/><rect x="139.18" y="7.92" width="0.64" height="24.17"/><rect x="140.18" y="7.55" width="0.64" height="24.89"/><rect x="141.18" y="7.59" width="0.64" height="24.81"/><rect x="142.18" y="7.73" width="0.64" height="24.55"/><rect x="143.18" y="7.69" width="0.64" height="24.62"/><rect x="144.18" y="5.69" width="0.64" height="28.61"/><rect x="145.18" y="7.99" width="0.64" height="24.02"/><rect x="146.18" y="8.14" width="0.64" height="23.71"/><rect x="147.18" y="8.07" width="0.64" height="23.86"/><rect x="148.18" y="6.76" width="0.64" height="26.49"/><rect x="149.18" y="7.76" width="0.64" height="24.47"/><rect x="150.18" y="6.09" width="0.64" height="27.82"/><rect x="151.18" y="6.28" width="0.64" height="27.44"/><rect x="152.18" y="3.51" width="0.64" height="32.98"/><rect x="153.18" y="6.95" width="0.64" height="26.11"/><rect x="154.18" y="4.76" width="0.64" height="30.48"/><rect x="155.18" y="8.41" width="0.64" height="23.18"/><rect x="156.18" y="9.45" width="0.64" height="21.09"/><rect x="157.18" y="9.99" width="0.64" height="20.03"/><rect x="158.18" y="8.94" width="0.64" height="22.12"/><rect x="159.18" y="12.53" width="0.64" height="14.93"/></g><g class="fg" clip-path="url(#clip-ep1)"><rect x="0.18" y="4.44" width="0.64" height="31.12"/><rect x="1.18" y="2.01" width="0.64" height="35.99"/><rect x="2.18" y="1.00" width="0.64" height="38.00"/><rect x="3.18" y="6.74" width="0.64" height="26.52"/><rect x="4.18" y="5.41" width="0.64" height="29.18"/><rect x="5.18" y="1.68" width="0.64" height="36.63"/><rect x="6.18" y="5.62" width="0.64" height="28.77"/><rect x="7.18" y="4.53" width="0.64" height="30.93"/><rect x="8.18" y="2.08" width="0.64" height="35.83"/><rect x="9.18" y="4.91" width="0.64" height="30.17"/><rect x="10.18" y="5.01" width="0.64" height="29.98"/><rect x="11.18" y="5.39" width="0.64" height="29.22"/><rect x="12.18" y="2.46" width="0.64" height="35.07"/><rect x="13.18" y="5.90" width="0.64" height="28.20"/><rect x="14.18" y="4.78" width="0.64" height="30.44"/><rect x="15.18" y="6.97" width="0.64" height="26.07"/><rect x="16.18" y="3.87" width="0.64" height="32.26"/><rect x="17.18" y="7.38" width="0.64" height="25.23"/><rect x="18.18" y="3.17" width="0.64" height="33.67"/><rect x="19.18" y="5.37" width="0.64" height="29.26"/><rect x="20.18" y="7.65" width="0.64" height="24.70"/><rect x="21.18" y="6.42" width="0.64" height="27.17"/><rect x="22.18" y="5.75" width="0.64" height="28.50"/><rect x="23.18" y="5.05" width="0.64" height="29.91"/><rect x="24.18" y="3.96" width="0.64" height="32.07"/><rect x="25.18" y="5.58" width="0.64" height="28.84"/><rect x="26.18" y="5.39" width="0.64" height="29.22"/><rect x="27.18" y="8.43" width="0.64" height="23.14"/><rect x="28.18" y="3.87" width="0.64" height="32.26"/><rect x="29.18" y="4.89" width="0.64" height="30.21"/><rect x="30.18" y="5.41" width="0.64" height="29.18"/><rect x="31.18" y="4.33" width="0.64" height="31.35"/><rect x="32.18" y="3.81" width="0.64" height="32.38"/><rect x="33.18" y="7.38" width="0.64" height="25.23"/><rect x="34.18" y="5.50" width="0.64" height="28.99"/><rect x="35.18" y="8.81" width="0.64" height="22.38"/><rect x="36.18" y="2.88" width="0.64" height="34.24"/><rect x="37.18" y="8.22" width="0.64" height="23.56"/><rect x="38.18" y="3.64" width="0.64" height="32.72"/><rect x="39.18" y="3.70" width="0.64" height="32.60"/><rect x="40.18" y="1.44" width="0.64" height="37.13"/><rect x="41.18" y="4.33" width="0.64" height="31.35"/><rect x="42.18" y="3.43" width="0.64" height="33.14"/><rect x="43.18" y="1.00" width="0.64" height="38.00"/><rect x="44.18" y="2.67" width="0.64" height="34.66"/><rect x="45.18" y="3.95" width="0.64" height="32.11"/><rect x="46.18" y="3.96" width="0.64" height="32.07"/><rect x="47.18" y="3.49" width="0.64" height="33.02"/><rect x="48.18" y="3.17" width="0.64" height="33.67"/><rect x="49.18" y="2.94" width="0.64" height="34.12"/><rect x="50.18" y="4.27" width="0.64" height="31.46"/><rect x="51.18" y="4.40" width="0.64" height="31.20"/><rect x="52.18" y="4.76" width="0.64" height="30.48"/><rect x="53.18" y="6.49" width="0.64" height="27.02"/><rect x="54.18" y="5.60" width="0.64" height="28.80"/><rect x="55.18" y="4.48" width="0.64" height="31.05"/><rect x="56.18" y="5.94" width="0.64" height="28.12"/><rect x="57.18" y="7.84" width="0.64" height="24.32"/><rect x="58.18" y="7.25" width="0.64" height="25.50"/><rect x="59.18" y="2.84" width="0.64" height="34.31"/><rect x="60.18" y="6.40" width="0.64" height="27.21"/><rect x="61.18" y="7.63" width="0.64" height="24.74"/><rect x="62.18" y="1.00" width="0.64" height="38.00"/><rect x="63.18" y="3.36" width="0.64" height="33.29"/><rect x="64.18" y="6.42" width="0.64" height="27.17"/><rect x="65.18" y="3.62" width="0.64" height="32.76"/><rect x="66.18" y="5.92" width="0.64" height="28.16"/><rect x="67.18" y="6.36" width="0.64" height="27.28"/><rect x="68.18" y="1.00" width="0.64" height="38.00"/><rect x="69.18" y="3.66" width="0.64" height="32.68"/><rect x="70.18" y="4.04" width="0.64" height="31.92"/><rect x="71.18" y="5.79" width="0.64" height="28.42"/><rect x="72.18" y="8.26" width="0.64" height="23.48"/><rect x="73.18" y="5.22" width="0.64" height="29.56"/><rect x="74.18" y="7.21" width="0.64" height="25.57"/><rect x="75.18" y="8.33" width="0.64" height="23.33"/><rect x="76.18" y="7.40" width="0.64" height="25.19"/><rect x="77.18" y="7.42" width="0.64" height="25.16"/><rect x="78.18" y="2.39" width="0.64" height="35.23"/><rect x="79.18" y="8.31" width="0.64" height="23.37"/><rect x="80.18" y="3.47" width="0.64" height="33.06"/><rect x="81.18" y="4.34" width="0.64" height="31.31"/><rect x="82.18" y="3.87" width="0.64" height="32.26"/><rect x="83.18" y="5.69" width="0.64" height="28.61"/><rect x="84.18" y="6.38" width="0.64" height="27.25"/><rect x="85.18" y="4.04" width="0.64" height="31.92"/><rect x="86.18" y="1.82" width="0.64" height="36.37"/><rect x="87.18" y="3.07" width="0.64" height="33.86"/><rect x="88.18" y="8.58" width="0.64" height="22.84"/><rect x="89.18" y="6.51" width="0.64" height="26.98"/><rect x="90.18" y="2.84" width="0.64" height="34.31"/><rect x="91.18" y="4.19" width="0.64" height="31.62"/><rect x="92.18" y="2.80" width="0.64" height="34.39"/><rect x="93.18" y="8.05" width="0.64" height="23.90"/><rect x="94.18" y="7.40" width="0.64" height="25.19"/><rect x="95.18" y="6.04" width="0.64" height="27.93"/><rect x="96.18" y="4.50" width="0.64" height="31.01"/><rect x="97.18" y="1.00" width="0.64" height="38.00"/><rect x="98.18" y="4.91" width="0.64" height="30.17"/><rect x="99.18" y="3.34" width="0.64" height="33.33"/><rect x="100.18" y="4.74" width="0.64" height="30.51"/><rect x="101.18" y="5.35" width="0.64" height="29.30"/><rect x="102.18" y="6.32" width="0.64" height="27.36"/><rect x="103.18" y="6.30" width="0.64" height="27.40"/><rect x="104.18" y="5.41" width="0.64" height="29.18"/><rect x="105.18" y="8.22" width="0.64" height="23.56"/><rect x="106.18" y="8.01" width="0.64" height="23.98"/><rect x="107.18" y="8.39" width="0.64" height="23.22"/><rect x="108.18" y="8.18" width="0.64" height="23.64"/><rect x="109.18" y="8.92" width="0.64" height="22.15"/><rect x="110.18" y="7.40" width="0.64" height="25.19"/><rect x="111.18" y="8.12" width="0.64" height="23.75"/><rect x="112.18" y="7.94" width="0.64" height="24.13"/><rect x="113.18" y="7.61" width="0.64" height="24.78"/><rect x="114.18" y="9.23" width="0.64" height="21.55"/><rect x="115.18" y="3.95" width="0.64" height="32.11"/><rect x="116.18" y="7.76" width="0.64" height="24.47"/><rect x="117.18" y="8.12" width="0.64" height="23.75"/><rect x="118.18" y="7.92" width="0.64" height="24.17"/><rect x="119.18" y="3.58" width="0.64" height="32.83"/><rect x="120.18" y="6.66" width="0.64" height="26.68"/><rect x="121.18" y="7.88" width="0.64" height="24.24"/><rect x="122.18" y="8.33" width="0.64" height="23.33"/><rect x="123.18" y="7.86" width="0.64" height="24.28"/><rect x="124.18" y="5.05" width="0.64" height="29.91"/><rect x="125.18" y="2.94" width="0.64" height="34.12"/><rect x="126.18" y="3.77" width="0.64" height="32.45"/><rect x="127.18" y="1.66" width="0.64" height="36.67"/><rect x="128.18" y="2.88" width="0.64" height="34.24"/><rect x="129.18" y="6.57" width="0.64" height="26.87"/><rect x="130.18" y="2.67" width="0.64" height="34.66"/><rect x="131.18" y="8.05" width="0.64" height="23.90"/><rect x="132.18" y="5.71" width="0.64" height="28.58"/><rect x="133.18" y="1.44" width="0.64" height="37.13"/><rect x="134.18" y="4.00" width="0.64" height="32.00"/><rect x="135.18" y="2.98" width="0.64" height="34.05"/><rect x="136.18" y="7.55" width="0.64" height="24.89"/><rect x="137.18" y="7.40" width="0.64" height="25.19"/><rect x="138.18" y="8.09" width="0.64" height="23.83"/><rect x="139.18" y="7.92" width="0.64" height="24.17"/><rect x="140.18" y="7.55" width="0.64" height="24.89"/><rect x="141.18" y="7.59" width="0.64" height="24.81"/><rect x="142.18" y="7.73" width="0.64" height="24.55"/><rect x="143.18" y="7.69" width="0.64" height="24.62"/><rect x="144.18" y="5.69" width="0.64" height="28.61"/><rect x="145.18" y="7.99" width="0.64" height="24.02"/><rect x="146.18" y="8.14" width="0.64" height="23.71"/><rect x="147.18" y="8.07" width="0.64" height="23.86"/><rect x="148.18" y="6.76" width="0.64" height="26.49"/><rect x="149.18" y="7.76" width="0.64" height="24.47"/><rect x="150.18" y="6.09" width="0.64" height="27.82"/><rect x="151.18" y="6.28" width="0.64" height="27.44"/><rect x="152.18" y="3.51" width="0.64" height="32.98"/><rect x="153.18" y="6.95" width="0.64" height="26.11"/><rect x="154.18" y="4.76" width="0.64" height="30.48"/><rect x="155.18" y="8.41" width="0.64" height="23.18"/><rect x="156.18" y="9.45" width="0.64" height="21.09"/><rect x="157.18" y="9.99" width="0.64" height="20.03"/><rect x="158.18" y="8.94" width="0.64" height="22.12"/><rect x="159.18" y="12.53" width="0.64" height="14.93"/></g>
-        </svg>
-        <span class="ghost"></span>
-      </div>
-      <div class="controls">
-        <span class="time">0:00</span>
-        <button class="back" type="button" aria-label="Back 15 seconds">−15</button>
-        <button class="fwd" type="button" aria-label="Forward 30 seconds">+30</button>
-        <button class="rate" type="button">1×</button>
-        <button class="resume" type="button" hidden></button>
-        <span class="time end">18:12</span>
+    <div class="ring-wrap" role="slider" tabindex="0" aria-label="Position in episode 1" aria-valuemin="0" aria-valuemax="1092" aria-valuenow="0">
+      <canvas aria-hidden="true"></canvas>
+      <div class="ring-center">
+        <button class="play" type="button" aria-label="Play">
+          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l15-8.5z"/></svg>
+          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h5v18H5zM14 3h5v18h-5z"/></svg>
+        </button>
+        <span class="ring-time"><b class="cur">0:00</b> / 18:12</span>
       </div>
     </div>
+    <div class="controls">
+      <button class="pill back" type="button" aria-label="Back 15 seconds">−15</button>
+      <button class="pill fwd" type="button" aria-label="Forward 30 seconds">+30</button>
+      <button class="pill rate" type="button">1×</button>
+      <button class="pill resume" type="button" hidden></button>
+    </div>
+    <audio preload="metadata" src="episodes/ep1-can-ai-be-your-therapist.mp3"></audio>
+  </div>
+  <div>
+    <p class="label ep-head">episode 1 · Nov 6, 2026 · 18 min</p>
+    <h3>Can AI be your therapist?</h3>
     <p class="desc">A therapist and an AI developer, friends since childhood, argue about whether AI is coming for mental health. Elana explains where chatbots genuinely help (logic-based work like CBT, practice between sessions, people too nervous to see a human) and where they&#x27;re dangerous: they agree with you when a good therapist would call you out, and they miss real risk. Daniel weighs in from the builder&#x27;s side on training, privacy (&quot;everything leaks to a megacorporation&quot;), and what we owe kids. They end on what AI may never do: be a human who cares about you.</p>
   </div>
 </article>
+</section>
+
+<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 
 <section class="listen" id="listen">
   <div>
-    <h2>Listen in your <span class="serif">podcast</span> app</h2>
-    <p class="why">Subscribe once and your app keeps your place, so you can stop halfway and pick up later. New episodes show up on their own.</p>
+    <h2 class="section-title">Listen in your <i>podcast app</i></h2>
+    <p class="why">Follow the show once and your app keeps your place, so you can stop halfway and pick up later. New episodes arrive on their own.</p>
   </div>
   <div>
     <div class="url">
       <input id="feed-url" readonly value="https://djacobs7.github.io/people-in-the-loop/feed.xml" aria-label="Feed link">
-      <button type="button" id="copy">Copy</button>
+      <button type="button" id="copy">Copy link</button>
     </div>
     <ul class="apps">
-      <li><strong>Apple Podcasts</strong><p>On iPhone or Mac. Or Library → ⋯ → Follow a Show by URL, and paste.</p><a class="go" href="podcast://djacobs7.github.io/people-in-the-loop/feed.xml">Open ↗</a>
+      <li><strong>Apple Podcasts</strong><p>On iPhone or Mac. Or Library → ⋯ → Follow a Show by URL, and paste.</p><a class="go pill" href="podcast://djacobs7.github.io/people-in-the-loop/feed.xml">Open</a>
         <details class="steps-guide" id="apple-steps">
           <summary><span>Step by step, with pictures</span></summary>
           <ol class="steps">
-            <li><p>Tap <b>Copy</b> above to copy the show’s link.</p></li>
+            <li><p>Tap <b>Copy link</b> above.</p></li>
             <li><p>Open the <b>Podcasts</b> app and go to the <b>Library</b> tab at the bottom.</p></li>
             <li><p>Tap <b>⋯</b> at the top of Library, then <b>Follow a Show by URL…</b></p>
-              <figure><img src="help/apple-follow-by-url.jpg" width="560" height="376" loading="lazy" alt="Podcasts app Library screen with a menu open: Follow a Show by URL…, New Station, Edit Library."><figcaption>The menu in Library.</figcaption></figure></li>
+              <figure><img src="help/apple-follow-by-url.jpg" width="560" height="376" loading="lazy" alt="Podcasts app Library screen with a menu open: Follow a Show by URL…, New Station, Edit Library."><figcaption class="label">The menu in Library.</figcaption></figure></li>
             <li><p>Tap the box, choose <b>Paste</b>, then tap <b>Follow</b>.</p></li>
             <li><p>The show is now in your Library. The <b>✓</b> at the top means you’re following it. Tap <b>▶&#xFE0E;</b> to start.</p>
-              <figure><img src="help/apple-show-page.jpg" width="560" height="752" loading="lazy" alt="The People in the Loop show page in Apple Podcasts, with a check mark at the top, the cover, and a play button showing 18 minutes."><figcaption>What you’ll see. The cover may look different while the app catches up.</figcaption></figure></li>
+              <figure><img src="help/apple-show-page.jpg" width="560" height="752" loading="lazy" alt="The People in the Loop show page in Apple Podcasts, with a check mark at the top, the cover, and a play button showing 18 minutes."><figcaption class="label">What you’ll see. The cover may look different while the app catches up.</figcaption></figure></li>
             <li><p>Stop whenever you like. The app keeps your place, and new episodes show up here on their own.</p></li>
           </ol>
-          <p class="mac" style="margin:18px 0 0;font-size:1rem">On a Mac: open Podcasts, choose <b>File → Follow a Show by URL…</b>, paste, and click Follow.</p>
+          <p class="mac">On a Mac: open Podcasts, choose <b>File → Follow a Show by URL…</b>, paste, and click Follow.</p>
         </details>
       </li>
-      <li><strong>Overcast</strong><p>Or tap + → Add URL, and paste.</p><a class="go" href="overcast://x-callback-url/add?url=https://djacobs7.github.io/people-in-the-loop/feed.xml">Open ↗</a></li>
+      <li><strong>Overcast</strong><p>Or tap + → Add URL, and paste.</p><a class="go pill" href="overcast://x-callback-url/add?url=https://djacobs7.github.io/people-in-the-loop/feed.xml">Open</a></li>
       <li><strong>Pocket Casts</strong><p>Paste the link into the search box.</p></li>
       <li><strong>Anything else</strong><p>Look for “Add by URL” or “Add RSS feed”, and paste.</p></li>
     </ul>
   </div>
 </section>
 
-<footer>
-  <span class="kicker">People in the Loop</span>
-  <a class="kicker" href="mailto:peopleintheloop@gmail.com">peopleintheloop@gmail.com</a>
+<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+<footer class="sign-off">
+  <p class="tag">Stay curious.<br>Stay informed.<br><i>Stay in the loop.</i></p>
+  <p>Have a question for us, or want to tell us how you’re using AI in your own life? We’d love to hear it.</p>
+  <p class="label"><a href="mailto:peopleintheloop@gmail.com">peopleintheloop@gmail.com</a></p>
 </footer>
 
 </div>
+<script>/* Voice loops: a person's voice drawn as a closed loop of fine strands.
+   Going once around the loop is the clip from start to end (12 o'clock, clockwise).
+   The distance from the centre is how loud they were at that moment.
+   Each strand mixes the low and high parts of the voice slightly differently,
+   so the strands fan apart where the voice changes, like wisps. */
+window.Loops = (() => {
+  const TAU = Math.PI * 2;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  const dark = matchMedia("(prefers-color-scheme: dark)");
+  const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+  function strand(v, k, K, o, phase) {
+    const n = v.low.length, t = K > 1 ? k / (K - 1) : 0.5;
+    const lag = Math.round(k * o.lag), gain = 0.8 + 0.4 * ((Math.sin(k * 2.39) + 1) / 2);
+    const pts = new Array(n);
+    for (let i = 0; i < n; i++) {
+      const j = (i - lag + n) % n;
+      const e = (1 - t) * v.low[j] + t * v.high[j];
+      const th = -Math.PI / 2 + (i / n) * TAU;
+      const r = o.r0 + o.amp * e * gain + o.wob * Math.sin(2 * th + k * 0.8 + phase) + o.spread * (t - 0.5);
+      pts[i] = [Math.cos(th) * r, Math.sin(th) * r];
+    }
+    return pts;
+  }
+
+  // smooth closed curve through the points (Catmull-Rom as cubic Béziers), segments a..b
+  function trace(ctx, P, a, b) {
+    const n = P.length;
+    ctx.moveTo(P[a % n][0], P[a % n][1]);
+    for (let i = a; i < b; i++) {
+      const p0 = P[(i - 1 + n) % n], p1 = P[i % n], p2 = P[(i + 1) % n], p3 = P[(i + 2) % n];
+      ctx.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6,
+                        p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6, p2[0], p2[1]);
+    }
+  }
+
+  function mount(canvas, cfg) {
+    const o = Object.assign({ r0: 0.6, amp: 0.34, wob: 0.018, spread: 0.07, lag: 0.35 }, cfg.shape || {});
+    const K = cfg.strands || 18, ctx = canvas.getContext("2d");
+    let phase = 0, raf = 0, visible = true, forced = false, start = performance.now();
+
+    function draw() {
+      const box = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+      const w = box.width, h = box.height;
+      if (!w || !h) return;
+      if (canvas.width !== Math.round(w * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      const half = Math.min(w, h) / 2, lw = cfg.lineWidth || 1;
+
+      for (const L of cfg.layers) {
+        const cx = L.x * w, cy = L.y * h, s = half * (L.size || 1);
+        if (cfg.grid) {
+          ctx.globalCompositeOperation = "source-over";
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = css("--rule");
+          ctx.lineWidth = 1;
+          ctx.setLineDash([2, 4]);
+          for (const r of cfg.grid.rings || []) { ctx.beginPath(); ctx.arc(cx, cy, r * s, 0, TAU); ctx.stroke(); }
+          ctx.setLineDash([]);
+          const ticks = cfg.grid.ticks || 0;
+          for (let i = 0; i < ticks; i++) {
+            const th = -Math.PI / 2 + (i / ticks) * TAU, r1 = (cfg.grid.tickIn || 0.97) * s, r2 = (cfg.grid.tickOut || 1.0) * s;
+            ctx.beginPath(); ctx.moveTo(cx + Math.cos(th) * r1, cy + Math.sin(th) * r1);
+            ctx.lineTo(cx + Math.cos(th) * r2, cy + Math.sin(th) * r2); ctx.stroke();
+          }
+          ctx.fillStyle = css("--muted");
+          ctx.font = `500 ${cfg.grid.labelSize || 10}px "IBM Plex Mono", ui-monospace, Menlo, monospace`;
+          ctx.textAlign = "center"; ctx.textBaseline = "middle";
+          for (const lab of cfg.grid.labels || []) {
+            const th = -Math.PI / 2 + lab.at * TAU, r = (cfg.grid.labelAt || 1.1) * s;
+            ctx.fillText(lab.text, cx + Math.cos(th) * r, cy + Math.sin(th) * r);
+          }
+        }
+
+        ctx.globalCompositeOperation = cfg.blend ? (dark.matches ? "screen" : "multiply") : "source-over";
+        ctx.lineWidth = lw; ctx.lineCap = "round"; ctx.lineJoin = "round";
+        const color = css(L.color), n = L.v.low.length;
+        let sweep = color;
+        if (cfg.sweep && ctx.createConicGradient) {
+          sweep = ctx.createConicGradient(-Math.PI / 2, cx, cy);
+          cfg.sweep.forEach((c, i) => sweep.addColorStop(i / (cfg.sweep.length - 1), css(c)));
+        }
+        const p = L.progress;
+        for (let k = 0; k < K; k++) {
+          const P = strand(L.v, k, K, o, phase + (L.phase || 0)).map(([x, y]) => [cx + x * s, cy + y * s]);
+          ctx.beginPath(); trace(ctx, P, 0, n); ctx.closePath();
+          ctx.strokeStyle = color;
+          ctx.globalAlpha = (p == null ? 1 : cfg.restAlpha ?? 0.35) * (cfg.alpha || 0.4);
+          ctx.stroke();
+          if (p != null && p > 0) {
+            ctx.beginPath(); trace(ctx, P, 0, Math.max(1, Math.round(p * n)));
+            ctx.strokeStyle = sweep; ctx.globalAlpha = cfg.playAlpha || 0.85;
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
+    }
+
+    function tick(now) {
+      phase = (now - start) / (cfg.period || 5200);
+      draw();
+      raf = (visible && (forced || (cfg.animate && !reduce.matches))) ? requestAnimationFrame(tick) : 0;
+    }
+    function wake() { if (!raf && visible && (forced || (cfg.animate && !reduce.matches))) raf = requestAnimationFrame(tick); else if (!raf) draw(); }
+
+    new ResizeObserver(() => draw()).observe(canvas);
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; wake(); }).observe(canvas);
+    dark.addEventListener("change", draw);
+    reduce.addEventListener("change", wake);
+    if (document.fonts) document.fonts.ready.then(draw);
+    draw(); wake();
+
+    return {
+      draw,
+      progress(i, p) { cfg.layers[i].progress = p; if (!raf) draw(); },
+      live(on) { forced = on && !reduce.matches; wake(); },
+      angleAt(e, i = 0) {
+        const box = canvas.getBoundingClientRect(), L = cfg.layers[i];
+        const dx = e.clientX - box.left - L.x * box.width, dy = e.clientY - box.top - L.y * box.height;
+        return ((Math.atan2(dy, dx) + Math.PI / 2 + TAU) % TAU) / TAU;
+      },
+    };
+  }
+
+  return { mount };
+})();
+</script>
 <script>
+const LOOP_DATA = {"hosts":{"elana":{"low":[0.001,0.001,0.001,0.001,0.002,0.002,0.018,0.203,0.533,0.838,1.0,1.0,1.0,0.969,0.777,0.584,0.469,0.432,0.448,0.509,0.577,0.653,0.723,0.718,0.674,0.691,0.686,0.582,0.478,0.454,0.473,0.469,0.431,0.402,0.393,0.387,0.402,0.423,0.432,0.416,0.354,0.283,0.247,0.21,0.144,0.083,0.052,0.035,0.024,0.018,0.013,0.01,0.066,0.232,0.452,0.665,0.851,0.982,1.0,0.889,0.756,0.642,0.507,0.358,0.207,0.178,0.377,0.661,0.889,0.959,0.967,0.984,0.847,0.626,0.484,0.413,0.337,0.288,0.419,0.654,0.762,0.637,0.397,0.253,0.291,0.406,0.507,0.544,0.492,0.367,0.223,0.127,0.079,0.181,0.453,0.646,0.688,0.677,0.638,0.612,0.564,0.436,0.276,0.162,0.182,0.311,0.398,0.407,0.372,0.284,0.184,0.116,0.068,0.038,0.025,0.016,0.01,0.008,0.007,0.004],"high":[0.006,0.001,0.001,0.001,0.001,0.001,0.078,0.477,0.891,0.797,0.441,0.246,0.288,0.608,0.931,1.0,1.0,0.855,0.592,0.348,0.262,0.324,0.39,0.325,0.205,0.18,0.294,0.57,0.83,0.93,1.0,1.0,0.788,0.551,0.703,0.894,0.933,0.92,0.88,0.788,0.596,0.367,0.213,0.13,0.084,0.058,0.039,0.025,0.015,0.009,0.005,0.003,0.186,0.567,0.857,0.928,0.906,0.818,0.68,0.483,0.265,0.16,0.168,0.167,0.1,0.255,0.628,0.731,0.481,0.258,0.203,0.365,0.711,0.883,0.692,0.347,0.178,0.2,0.264,0.384,0.435,0.337,0.237,0.224,0.262,0.445,0.752,0.841,0.602,0.325,0.178,0.106,0.072,0.146,0.445,0.811,0.971,0.914,0.789,0.7,0.607,0.422,0.225,0.127,0.148,0.325,0.555,0.633,0.492,0.277,0.178,0.155,0.118,0.086,0.072,0.062,0.065,0.087,0.075,0.032],"dur":2.75},"daniel":{"low":[0.001,0.001,0.001,0.002,0.002,0.003,0.003,0.006,0.009,0.01,0.081,0.272,0.478,0.593,0.558,0.376,0.235,0.22,0.215,0.262,0.419,0.563,0.717,0.933,1.0,1.0,1.0,1.0,0.665,0.419,0.386,0.464,0.579,0.578,0.48,0.383,0.291,0.199,0.127,0.088,0.068,0.053,0.033,0.02,0.015,0.011,0.061,0.167,0.293,0.442,0.549,0.53,0.522,0.59,0.583,0.519,0.436,0.328,0.25,0.187,0.142,0.131,0.154,0.194,0.214,0.231,0.274,0.312,0.315,0.314,0.325,0.339,0.395,0.531,0.676,0.729,0.616,0.415,0.357,0.389,0.301,0.175,0.13,0.299,0.632,0.81,0.798,0.789,0.836,0.872,0.851,0.781,0.705,0.59,0.388,0.249,0.207,0.161,0.187,0.275,0.302,0.262,0.212,0.186,0.17,0.136,0.101,0.073,0.046,0.028,0.021,0.014,0.008,0.005,0.004,0.003,0.002,0.002,0.001,0.001],"high":[0.0,0.001,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.004,0.201,0.566,0.781,0.713,0.51,0.329,0.23,0.176,0.16,0.185,0.286,0.478,0.66,0.775,0.846,0.89,0.881,0.788,0.623,0.432,0.316,0.37,0.477,0.474,0.393,0.307,0.222,0.149,0.096,0.067,0.054,0.039,0.024,0.017,0.012,0.012,0.134,0.376,0.59,0.695,0.641,0.472,0.393,0.57,0.748,0.605,0.349,0.278,0.284,0.242,0.199,0.316,0.653,0.943,1.0,1.0,1.0,1.0,0.918,0.87,0.832,0.826,0.833,0.827,0.797,0.689,0.479,0.284,0.214,0.206,0.17,0.114,0.084,0.164,0.433,0.702,0.734,0.688,0.818,0.913,0.798,0.645,0.503,0.353,0.23,0.153,0.12,0.102,0.144,0.212,0.252,0.269,0.247,0.236,0.235,0.193,0.144,0.094,0.056,0.039,0.025,0.019,0.013,0.009,0.007,0.004,0.002,0.001,0.0,0.0],"dur":1.95}},"episodes":{"ep1":{"low":[0.691,1.0,1.0,1.0,0.949,0.902,1.0,0.909,0.744,0.784,0.875,0.887,0.842,0.796,0.763,0.749,0.727,0.755,0.803,0.801,0.774,0.785,0.876,0.902,0.797,0.691,0.671,0.717,0.757,0.81,0.859,0.826,0.785,0.763,0.755,0.755,0.73,0.749,0.806,0.88,0.9,0.811,0.745,0.712,0.758,0.831,0.764,0.779,0.855,0.907,0.955,0.875,0.803,0.872,1.0,1.0,0.928,0.856,0.843,0.85,0.832,0.779,0.772,0.769,0.757,0.761,0.718,0.728,0.794,0.786,0.734,0.71,0.803,0.922,0.869,0.738,0.723,0.841,0.919,0.871,0.822,0.802,0.795,0.794,0.854,0.93,0.869,0.84,0.84,0.739,0.656,0.688,0.758,0.698,0.588,0.561,0.673,0.881,0.9,0.79,0.82,0.855,0.835,0.83,0.754,0.716,0.802,0.922,0.958,0.789,0.609,0.709,0.867,0.838,0.849,0.857,0.709,0.619,0.683,0.802,0.93,1.0,0.942,0.877,0.831,0.813,0.796,0.764,0.804,0.832,0.809,0.754,0.668,0.608,0.602,0.611,0.606,0.62,0.638,0.629,0.648,0.663,0.616,0.668,0.771,0.715,0.616,0.59,0.715,0.869,0.798,0.666,0.642,0.623,0.63,0.762,0.842,0.829,0.888,0.978,0.976,0.872,0.895,0.907,0.793,0.827,0.934,0.981,0.981,0.875,0.73,0.648,0.61,0.61,0.631,0.65,0.68,0.717,0.745,0.763,0.78,0.745,0.65,0.602,0.63,0.688,0.726,0.743,0.785,0.837,0.845,0.799,0.732,0.674,0.617,0.545,0.529,0.562,0.498,0.481],"high":[0.694,0.821,0.704,0.677,0.772,0.763,0.731,0.798,0.882,0.985,1.0,0.85,0.695,0.704,0.76,0.752,0.758,0.83,0.875,0.881,0.881,0.835,0.797,0.779,0.71,0.604,0.557,0.591,0.634,0.663,0.632,0.593,0.607,0.631,0.713,0.788,0.764,0.704,0.69,0.734,0.756,0.716,0.636,0.622,0.78,0.869,0.761,0.72,0.732,0.738,0.791,0.844,0.83,0.791,0.822,0.837,0.846,0.925,0.949,0.93,0.998,1.0,0.935,0.863,0.844,0.807,0.779,0.852,0.874,0.826,0.739,0.584,0.529,0.612,0.668,0.624,0.683,0.959,1.0,0.944,0.842,0.836,0.792,0.756,0.814,0.939,1.0,0.982,0.845,0.669,0.511,0.551,0.718,0.695,0.603,0.607,0.665,0.785,0.878,0.872,0.791,0.753,0.762,0.697,0.656,0.77,0.907,0.968,1.0,0.96,0.772,0.746,0.834,0.865,0.923,0.912,0.726,0.631,0.726,0.828,0.911,0.97,0.951,0.935,0.983,1.0,0.941,0.863,0.826,0.862,0.897,0.826,0.723,0.688,0.676,0.667,0.66,0.614,0.589,0.581,0.578,0.573,0.53,0.661,0.84,0.746,0.625,0.632,0.758,0.857,0.699,0.583,0.606,0.643,0.784,0.917,0.865,0.791,0.891,0.95,0.892,0.889,0.894,0.8,0.755,0.83,0.871,0.924,0.989,0.842,0.62,0.611,0.65,0.631,0.611,0.576,0.551,0.53,0.519,0.54,0.585,0.621,0.613,0.557,0.507,0.504,0.506,0.537,0.605,0.675,0.708,0.783,0.863,0.739,0.61,0.599,0.591,0.622,0.54,0.473]}}};
 (() => {
   const fmt = s => {
     s = Math.max(0, Math.floor(s || 0));
@@ -263,22 +447,61 @@ footer a { color: var(--muted); }
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} },
     del: k => { try { localStorage.removeItem(k); } catch (e) {} },
   };
-  const rates = [1, 1.25, 1.5, 2, 0.75];
   const audios = [];
+  const solo = a => audios.forEach(o => o !== a && o.pause());
 
+  // fig. 1: both voices, overlapping
+  const H = LOOP_DATA.hosts;
+  Loops.mount(document.getElementById("hero-loops"), {
+    layers: [
+      { v: H.elana, color: "--elana", x: 0.4, y: 0.5, size: 0.78 },
+      { v: H.daniel, color: "--daniel", x: 0.6, y: 0.5, size: 0.78, phase: 1.7 },
+    ],
+    strands: 22, blend: true, animate: true, alpha: 0.5, lineWidth: 1,
+  });
+
+  // the people: their loop is their sentence; play it and the loop traces along
+  document.querySelectorAll(".person").forEach(card => {
+    const id = card.dataset.id, v = H[id], a = card.querySelector("audio"), btn = card.querySelector(".hear");
+    const marks = [];
+    for (let t = 0; t < v.dur; t += 1) marks.push({ at: t / v.dur, text: `${t}s` });
+    const loop = Loops.mount(card.querySelector("canvas"), {
+      layers: [{ v, color: "--" + id, x: 0.5, y: 0.5, size: 0.8 }],
+      strands: 16, alpha: 0.55, restAlpha: 0.45,
+      grid: { rings: [0.45, 0.75], ticks: 12, tickIn: 1.02, tickOut: 1.08, labels: marks, labelAt: 1.2, labelSize: 9 },
+    });
+    audios.push(a);
+    btn.onclick = () => (a.paused ? (a.currentTime = 0, a.play()) : a.pause());
+    let frame = 0;
+    const follow = () => { loop.progress(0, a.currentTime / v.dur); frame = a.paused ? 0 : requestAnimationFrame(follow); };
+    a.addEventListener("play", () => { solo(a); card.classList.add("playing"); btn.textContent = "Stop"; loop.live(true); follow(); });
+    const stop = () => { card.classList.remove("playing"); btn.textContent = "Hear " + card.dataset.name; loop.live(false); cancelAnimationFrame(frame); loop.progress(0, null); };
+    a.addEventListener("pause", stop); a.addEventListener("ended", stop);
+  });
+
+  // episodes: the episode wrapped into a loop, filling in as you listen
+  const rates = [1, 1.25, 1.5, 2, 0.75];
   document.querySelectorAll(".player").forEach(p => {
-    const a = p.querySelector("audio"), play = p.querySelector(".play"), wave = p.querySelector(".wave");
-    const clip = p.querySelector("clipPath rect"), ghost = p.querySelector(".ghost");
-    const cur = p.querySelector(".time"), resume = p.querySelector(".resume"), rate = p.querySelector(".rate");
-    const total = +p.dataset.duration, bars = +p.dataset.bars, key = "pitl-pos-" + p.dataset.id;
+    const a = p.querySelector("audio"), play = p.querySelector(".play"), ring = p.querySelector(".ring-wrap");
+    const cur = p.querySelector(".cur"), resume = p.querySelector(".resume"), rate = p.querySelector(".rate");
+    const total = +p.dataset.duration, key = "pitl-pos-" + p.dataset.id, v = LOOP_DATA.episodes[p.dataset.id];
+    const mins = Math.floor(total / 60), labels = [];
+    for (let m = 0; m <= mins; m += 5) labels.push({ at: (m * 60) / total, text: m ? `${m}m` : "0" });
+    const loop = Loops.mount(p.querySelector("canvas"), {
+      layers: [{ v, color: "--wave", x: 0.5, y: 0.5, size: 0.84, progress: 0 }],
+      strands: 7, alpha: 0.9, restAlpha: 0.5, playAlpha: 0.95, lineWidth: 1.1,
+      shape: { r0: 0.66, amp: 0.26, wob: 0.006, spread: 0.06, lag: 0.25 },
+      sweep: ["--elana", "--daniel", "--elana"],
+      grid: { ticks: Math.max(mins, 1), tickIn: 1.0, tickOut: 1.04, labels, labelAt: 1.12, labelSize: 10 },
+    });
     let pending = null, dragging = false, lastSaved = 0;
     audios.push(a);
 
     const draw = t => {
-      clip.setAttribute("width", (t / total * bars).toFixed(2));
+      loop.progress(0, t / total);
       cur.textContent = fmt(t);
-      wave.setAttribute("aria-valuenow", Math.round(t));
-      wave.setAttribute("aria-valuetext", `${fmt(t)} of ${fmt(total)}`);
+      ring.setAttribute("aria-valuenow", Math.round(t));
+      ring.setAttribute("aria-valuetext", `${fmt(t)} of ${fmt(total)}`);
     };
     const now = () => pending ?? a.currentTime;
     const seek = t => {
@@ -289,18 +512,18 @@ footer a { color: var(--muted); }
     a.addEventListener("loadedmetadata", () => { if (pending != null) { a.currentTime = pending; pending = null; } });
 
     const saved = parseFloat(store.get(key));
-    if (saved > 15 && saved < total - 20) {
+    const hasSaved = saved > 15 && saved < total - 20;
+    if (hasSaved) {
       resume.hidden = false;
       resume.textContent = "Pick up at " + fmt(saved);
       resume.onclick = () => { seek(saved); a.play(); };
+      pending = saved;
     }
+    draw(hasSaved ? saved : 0);
 
-    play.onclick = () => (a.paused ? a.play() : a.pause());
+    play.onclick = e => { e.stopPropagation(); a.paused ? a.play() : a.pause(); };
     a.addEventListener("play", () => {
-      audios.forEach(o => o !== a && o.pause());
-      p.classList.add("playing");
-      play.setAttribute("aria-label", "Pause");
-      resume.hidden = true;
+      solo(a); p.classList.add("playing"); play.setAttribute("aria-label", "Pause"); resume.hidden = true;
       if ("mediaSession" in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: p.dataset.title, artist: p.dataset.artist, album: p.dataset.album,
@@ -310,48 +533,40 @@ footer a { color: var(--muted); }
         navigator.mediaSession.setActionHandler("seekforward", () => seek(now() + 30));
       }
     });
-    a.addEventListener("pause", () => {
-      p.classList.remove("playing");
-      play.setAttribute("aria-label", "Play");
-      if (a.currentTime > 0) store.set(key, a.currentTime);
-    });
+    a.addEventListener("pause", () => { p.classList.remove("playing"); play.setAttribute("aria-label", "Play"); if (a.currentTime > 0) store.set(key, a.currentTime); });
     a.addEventListener("timeupdate", () => {
       if (!dragging) draw(a.currentTime);
       if (Math.abs(a.currentTime - lastSaved) > 5) { lastSaved = a.currentTime; store.set(key, a.currentTime); }
     });
     a.addEventListener("ended", () => store.del(key));
 
-    const at = e => {
-      const r = wave.getBoundingClientRect();
-      return Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1) * total;
-    };
-    wave.addEventListener("pointermove", e => {
-      const r = wave.getBoundingClientRect();
-      ghost.style.left = (e.clientX - r.left) + "px";
-      if (dragging) draw(at(e));
-    });
-    wave.addEventListener("pointerdown", e => { dragging = true; wave.setPointerCapture(e.pointerId); draw(at(e)); });
-    wave.addEventListener("pointerup", e => { if (dragging) { dragging = false; seek(at(e)); } });
-    wave.addEventListener("pointercancel", () => { dragging = false; draw(now()); });
-    wave.addEventListener("keydown", e => {
+    // drag around the ring to move through the episode
+    ring.addEventListener("pointerdown", e => { if (e.target.closest(".play")) return; dragging = true; ring.setPointerCapture(e.pointerId); draw(loop.angleAt(e) * total); });
+    ring.addEventListener("pointermove", e => { if (dragging) draw(loop.angleAt(e) * total); });
+    ring.addEventListener("pointerup", e => { if (dragging) { dragging = false; seek(loop.angleAt(e) * total); } });
+    ring.addEventListener("pointercancel", () => { dragging = false; draw(now()); });
+    ring.addEventListener("keydown", e => {
       const step = { ArrowRight: 10, ArrowUp: 10, ArrowLeft: -10, ArrowDown: -10, PageUp: 60, PageDown: -60 }[e.key];
-      if (e.key === "Home") seek(0);
-      else if (e.key === "End") seek(total);
-      else if (step) seek(now() + step);
-      else return;
+      if (e.key === "Home") seek(0); else if (e.key === "End") seek(total); else if (step) seek(now() + step); else return;
       e.preventDefault();
     });
     p.querySelector(".back").onclick = () => seek(now() - 15);
     p.querySelector(".fwd").onclick = () => seek(now() + 30);
-
     const setRate = r => { a.playbackRate = r; rate.textContent = r + "×"; rate.setAttribute("aria-label", `Speed ${r}×`); };
     setRate(parseFloat(store.get("pitl-rate")) || 1);
-    rate.onclick = () => {
-      const r = rates[(rates.indexOf(a.playbackRate) + 1) % rates.length];
-      setRate(r); store.set("pitl-rate", r);
-    };
-    draw(saved > 15 && saved < total - 20 ? saved : 0);
-    if (saved > 15 && saved < total - 20) pending = saved;
+    rate.onclick = () => { const r = rates[(rates.indexOf(a.playbackRate) + 1) % rates.length]; setRate(r); store.set("pitl-rate", r); };
+  });
+
+  // the circled phrase draws itself in when it scrolls into view
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll(".circled path").forEach(path => {
+    if (reduce || !("IntersectionObserver" in window)) return;
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = len; path.style.strokeDashoffset = len;
+    new IntersectionObserver((es, io) => {
+      if (!es[0].isIntersecting) return;
+      path.style.transition = "stroke-dashoffset 1.1s cubic-bezier(.6,.1,.3,1) .25s"; path.style.strokeDashoffset = 0; io.disconnect();
+    }, { threshold: 0.8 }).observe(path.closest(".circled"));
   });
 
   // a link to …/#apple-steps opens the guide straight away
@@ -364,7 +579,7 @@ footer a { color: var(--muted); }
     try { await navigator.clipboard.writeText(input.value); }
     catch (e) { input.select(); document.execCommand("copy"); }
     copy.textContent = "Copied"; copy.classList.add("done");
-    setTimeout(() => { copy.textContent = "Copy"; copy.classList.remove("done"); }, 1800);
+    setTimeout(() => { copy.textContent = "Copy link"; copy.classList.remove("done"); }, 1800);
   };
 })();
 </script>
