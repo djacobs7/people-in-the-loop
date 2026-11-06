@@ -80,7 +80,7 @@ button { font: inherit; color: inherit; }
 /* hero */
 .hero { display: grid; gap: 8px; align-items: center; margin-top: clamp(16px, 4vw, 40px); }
 .hero figure { margin: 8px 0 0; }
-.hero-art { position: relative; aspect-ratio: 1.25; margin: 0 calc(-1 * var(--gutter)); }
+.hero-art { position: relative; aspect-ratio: 1.37; margin: 0 calc(-1 * var(--gutter) / 2); }
 .hero-art canvas { width: 100%; height: 100%; display: block; }
 .title { font: 400 clamp(4rem, 1.6rem + 11vw, 9.5rem)/0.86 var(--serif); letter-spacing: -0.02em; margin: 0; }
 .title i { font-style: italic; font-size: 0.62em; letter-spacing: 0; padding: 0 0.04em; }
@@ -88,23 +88,10 @@ button { font: inherit; color: inherit; }
 .lede .name-serif { font-size: 1.18em; }
 .hero figcaption { margin: -4px 0 0; text-align: center; }
 @media (min-width: 900px) {
-  .hero { grid-template-columns: 6fr 5fr; gap: var(--gutter); margin-top: 24px; }
-  .hero-art { margin: 0; aspect-ratio: 1.05; }
+  .hero { grid-template-columns: 5fr 6fr; gap: var(--gutter); margin-top: 24px; }
+  .hero-art { margin: 0 calc(-1 * var(--gutter)) 0 -12px; aspect-ratio: 1.3; }
   .hero figure { margin: 0; }
 }
-
-/* the two people */
-.people { display: grid; gap: 40px; margin-top: 28px; }
-.person { display: grid; grid-template-columns: minmax(130px, 200px) 1fr; gap: 6px 20px; align-items: center; }
-.person canvas { width: 100%; aspect-ratio: 1; display: block; grid-row: span 3; }
-.person h3 { margin: 0; font-size: 2.5rem; line-height: 1; font-weight: 400; }
-.person h3.name-mono { font: 500 2rem/1 var(--mono); letter-spacing: -0.05em; }
-.person .role { margin: 0; color: var(--muted); }
-.person .hear { justify-self: start; margin-top: 6px; }
-.person .said { grid-column: 1 / -1; margin: 6px 0 0; }
-.person.playing .hear { background: var(--ink); color: var(--paper); }
-.people-note { margin: 0; font: italic 400 clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem)/1.2 var(--serif); }
-@media (min-width: 760px) { .people { grid-template-columns: 1fr 1fr; } .people-note { grid-column: 1 / -1; } }
 
 /* cold open, pulled */
 .quote { margin: 0; padding-top: clamp(32px, 6vw, 64px); display: grid; gap: 20px; }
@@ -190,37 +177,12 @@ button { font: inherit; color: inherit; }
 <section class="hero">
   <div>
     <h1 class="title">People<br> <i>in the</i> Loop</h1>
-    <p class="lede"><span class="name-serif elana">Elana</span> is a therapist. <span class="name-mono daniel">Daniel</span> builds AI. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.</p>
+    <p class="lede"><span class="name-serif elana">Elana</span> is a therapist. <span class="name-mono daniel">Daniel</span> builds AI. They’ve known each other since they were three. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.</p>
   </div>
   <figure>
     <div class="hero-art"><canvas id="hero-loops" aria-hidden="true"></canvas></div>
-    <figcaption class="label">fig. 1 · <span class="dot e"></span>Elana and <span class="dot d"></span>Daniel, each saying who they are, drawn as loops</figcaption>
+    <figcaption class="label">fig. 1 · <span class="dot e"></span>Elana and <span class="dot d"></span>Daniel, outlined in their own voices, in a loop made of the episode</figcaption>
   </figure>
-</section>
-
-<div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-<section aria-labelledby="who">
-  <h2 class="section-title" id="who">Who’s <i>talking</i></h2>
-  <div class="people">
-    <article class="person" data-id="elana" data-name="Elana">
-      <canvas aria-hidden="true"></canvas>
-      <h3 class="name-serif elana">Elana</h3>
-      <p class="role">Mental health therapist</p>
-      <button class="pill hear" type="button">Hear Elana</button>
-      <p class="said label">“And I’m Elana. I’m a mental health therapist.” · 2.8 s, drawn from the recording</p>
-      <audio preload="none" src="voices/elana.mp3"></audio>
-    </article>
-    <article class="person" data-id="daniel" data-name="Daniel">
-      <canvas aria-hidden="true"></canvas>
-      <h3 class="name-mono daniel">Daniel</h3>
-      <p class="role">AI developer</p>
-      <button class="pill hear" type="button">Hear Daniel</button>
-      <p class="said label">“I’m Daniel. I’m an AI developer.” · 1.9 s, drawn from the recording</p>
-      <audio preload="none" src="voices/daniel.mp3"></audio>
-    </article>
-    <p class="people-note">“We’ve known each other since we were three.”</p>
-  </div>
 </section>
 
 <div class="loop-rule" aria-hidden="true"><svg viewBox="0 0 84 42"><path d="M0 41.25 L4.30 41.25 L6.33 41.21 L8.35 41.09 L10.36 40.88 L12.36 40.60 L14.34 40.24 L16.28 39.80 L18.20 39.29 L20.08 38.70 L21.93 38.05 L23.72 37.32 L25.47 36.53 L27.16 35.69 L28.80 34.78 L30.37 33.82 L31.88 32.81 L33.32 31.75 L34.69 30.65 L35.99 29.52 L37.22 28.36 L38.36 27.17 L39.43 25.96 L40.42 24.73 L41.32 23.49 L42.15 22.25 L42.90 21.01 L43.56 19.77 L44.14 18.54 L44.64 17.33 L45.07 16.14 L45.42 14.98 L45.69 13.85 L45.89 12.75 L46.02 11.69 L46.08 10.68 L46.07 9.72 L46.01 8.81 L45.89 7.97 L45.71 7.18 L45.49 6.45 L45.22 5.80 L44.91 5.21 L44.56 4.70 L44.18 4.26 L43.78 3.90 L43.35 3.62 L42.91 3.41 L42.46 3.29 L42.00 3.25 L41.54 3.29 L41.09 3.41 L40.65 3.62 L40.22 3.90 L39.82 4.26 L39.44 4.70 L39.09 5.21 L38.78 5.80 L38.51 6.45 L38.29 7.18 L38.11 7.97 L37.99 8.81 L37.93 9.72 L37.92 10.68 L37.98 11.69 L38.11 12.75 L38.31 13.85 L38.58 14.98 L38.93 16.14 L39.36 17.33 L39.86 18.54 L40.44 19.77 L41.10 21.01 L41.85 22.25 L42.68 23.49 L43.58 24.73 L44.57 25.96 L45.64 27.17 L46.78 28.36 L48.01 29.52 L49.31 30.65 L50.68 31.75 L52.12 32.81 L53.63 33.82 L55.20 34.78 L56.84 35.69 L58.53 36.53 L60.28 37.32 L62.07 38.05 L63.92 38.70 L65.80 39.29 L67.72 39.80 L69.66 40.24 L71.64 40.60 L73.64 40.88 L75.65 41.09 L77.67 41.21 L79.70 41.25 L84 41.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -431,7 +393,137 @@ window.Loops = (() => {
     };
   }
 
-  return { mount };
+  /* ---------- People in the loop ----------
+     One loop, carrying the sound of the episode and slowly travelling around.
+     Out of the bottom of it grow two people facing each other, Elana and Daniel,
+     each outlined in wisps traced from their own voice saying who they are. */
+
+  // facing right, in "head units": crown near y 8, chin near y 83, nose tip near x 81
+  const PROFILE = [
+    [13, 104], [19, 96], [21, 88], [18, 79], [12, 69], [8, 56], [8.5, 41], [14, 27], [25, 15.5],
+    [39, 9], [53, 8.5], [64, 13], [71, 22], [73.5, 32], [74.5, 40], [72.6, 44.5], [74, 48.5], [78.2, 55.5],
+    [81, 60], [78, 62.3], [75.4, 63.2], [76.9, 65.6], [75, 67.8], [76.6, 70.2], [74.7, 72.6], [73.4, 75],
+    [74.6, 79], [71.2, 82.6], [64, 84], [59, 86.5], [57.5, 93], [59.5, 99], [64, 103],
+  ];
+  
+  function spline(ctrl, closed, per = 10) {
+    const n = ctrl.length, out = [], segs = closed ? n : n - 1;
+    const at = i => closed ? ctrl[(i + n) % n] : ctrl[Math.min(Math.max(i, 0), n - 1)];
+    for (let i = 0; i < segs; i++) {
+      const p0 = at(i - 1), p1 = at(i), p2 = at(i + 1), p3 = at(i + 2);
+      for (let j = 0; j < per; j++) {
+        const t = j / per, t2 = t * t, t3 = t2 * t;
+        out.push([0, 1].map(d => 0.5 * ((2 * p1[d]) + (-p0[d] + p2[d]) * t + (2 * p0[d] - 5 * p1[d] + 4 * p2[d] - p3[d]) * t2 + (-p0[d] + 3 * p1[d] - 3 * p2[d] + p3[d]) * t3)));
+      }
+    }
+    if (!closed) out.push(ctrl[n - 1].slice());
+    return out;
+  }
+  function resample(P, N, closed) {
+    const pts = closed ? P.concat([P[0]]) : P, acc = [0];
+    for (let i = 1; i < pts.length; i++) acc.push(acc[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+    const total = acc[acc.length - 1], out = [];
+    for (let k = 0, j = 1; k < N; k++) {
+      const d = (k / (closed ? N : N - 1)) * total;
+      while (j < acc.length - 1 && acc[j] < d) j++;
+      const f = (d - acc[j - 1]) / ((acc[j] - acc[j - 1]) || 1);
+      out.push([pts[j - 1][0] + (pts[j][0] - pts[j - 1][0]) * f, pts[j - 1][1] + (pts[j][1] - pts[j - 1][1]) * f]);
+    }
+    return out;
+  }
+  const sample = (arr, s) => {
+    const n = arr.length, x = ((s % 1) + 1) % 1 * n, i = Math.floor(x), f = x - i;
+    return arr[i % n] * (1 - f) + arr[(i + 1) % n] * f;
+  };
+
+  // one wisp: base path pushed out along its normals by the voice, fanning apart where it is loud.
+  // envAt(i, t) gives the loudness at point i for a strand at position t (0..1) across the bundle.
+  function wisp(P, closed, envAt, k, K, o, phase) {
+    const n = P.length, t = K > 1 ? k / (K - 1) : 0.5, side = (t - 0.5) * 2;
+    const gain = 0.75 + 0.5 * ((Math.sin(k * 2.39) + 1) / 2), out = new Array(n);
+    for (let i = 0; i < n; i++) {
+      const a = P[closed ? (i - 1 + n) % n : Math.max(i - 1, 0)], b = P[closed ? (i + 1) % n : Math.min(i + 1, n - 1)];
+      let tx = b[0] - a[0], ty = b[1] - a[1];
+      const len = Math.hypot(tx, ty) || 1; tx /= len; ty /= len;
+      const s = i / (closed ? n : n - 1);
+      const taper = o.taper ? o.taper(s) : 1;
+      const e = envAt(i, t);
+      const off = taper * (o.spread * side + o.amp * e * side * gain + o.lift * e + o.wob * Math.sin(o.waves * TAU * s + k * 0.9 + phase));
+      out[i] = [P[i][0] - ty * off, P[i][1] + tx * off];
+    }
+    return out;
+  }
+  const along = (v, n, closed, shift = 0) => (i, t) => {
+    const s = i / (closed ? n : n - 1) + shift;
+    return (1 - t) * sample(v.low, s) + t * sample(v.high, s);
+  };
+  function people(canvas, cfg) {
+    const ctx = canvas.getContext("2d"), reduce2 = reduce;
+    let raf = 0, visible = true, start = performance.now();
+
+    function draw(now = start) {
+      const box = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+      const w = box.width, h = box.height;
+      if (!w || !h) return;
+      if (canvas.width !== Math.round(w * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      const time = (now - start) / 1000, phase = time / 5.2;
+      const u = Math.min(h / 178, w / 262), cx = w / 2, cy = h / 2, gap = 15;
+      const rx = 116 * u, ry = 80 * u, oy = cy - 54 * u;
+      const left = ([x, y]) => [cx - gap / 2 * u - (81 - x) * u, oy + y * u];
+      const right = ([x, y]) => [cx + gap / 2 * u + (81 - x) * u, oy + y * u];
+      const lw = cfg.lineWidth || 1, alpha = cfg.alpha || 0.5;
+      ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.lineWidth = lw;
+      ctx.globalCompositeOperation = dark.matches ? "screen" : "multiply";
+      const stroke = (P, closed, style, a) => {
+        ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+        const n = P.length, last = closed ? n : n - 1;
+        for (let i = 0; i < last; i++) {
+          const p0 = P[closed ? (i - 1 + n) % n : Math.max(i - 1, 0)], p1 = P[i % n], p2 = P[(i + 1) % n], p3 = P[closed ? (i + 2) % n : Math.min(i + 2, n - 1)];
+          ctx.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6, p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6, p2[0], p2[1]);
+        }
+        if (closed) ctx.closePath();
+        ctx.strokeStyle = style; ctx.globalAlpha = a; ctx.stroke();
+      };
+
+      // the loop, carrying the conversation around them
+      const ring = [];
+      for (let i = 0; i < 240; i++) { const th = -Math.PI / 2 + (i / 240) * TAU; ring.push([cx + Math.cos(th) * rx, cy + Math.sin(th) * ry]); }
+      const grad = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+      grad.addColorStop(0, css("--elana")); grad.addColorStop(1, css("--daniel"));
+      const travel = reduce2.matches ? 0 : -time / 90;
+      const KL = cfg.loopStrands || 22;
+      for (let k = 0; k < KL; k++)
+        stroke(wisp(ring, true, along(cfg.conversation, ring.length, true, travel), k, KL, { spread: 3 * u, amp: 5 * u, lift: 1.5 * u, wob: 1 * u, waves: 3 }, phase), true, grad, alpha * 0.85);
+
+      // the two people, outlined in their own voices
+      // each outline grows out of the bottom of the loop, up the back of the neck, over the head and down the face
+      const onLoop = th => [cx + Math.cos(th) * rx, cy + Math.sin(th) * ry];
+      const heads = [[left, cfg.hosts.elana, "--elana", 1], [right, cfg.hosts.daniel, "--daniel", -1]];
+      const KH = cfg.headStrands || 15;
+      for (const [place, v, color, sgn] of heads) {
+        const j1 = onLoop(Math.PI / 2 + sgn * 0.02), j2 = onLoop(Math.PI / 2 + sgn * 0.3);
+        const P = resample(spline([j1, j2, ...PROFILE.slice(2).map(place)], false, 8), 260, false);
+        for (let k = 0; k < KH; k++)
+          stroke(wisp(P, false, along(v, P.length, false), k, KH, { spread: 1.8 * u, amp: 1.5 * u, lift: 0, wob: 0.35 * u, waves: 2, taper: s => Math.min(1, s * 6, Math.sin(Math.PI * s) * 3) }, phase),
+                 false, css(color), alpha);
+      }
+
+      ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
+    }
+
+    function tick(now) { draw(now); raf = visible && cfg.animate && !reduce.matches ? requestAnimationFrame(tick) : 0; }
+    function wake() { if (!raf && visible && cfg.animate && !reduce.matches) raf = requestAnimationFrame(tick); else if (!raf) draw(); }
+    new ResizeObserver(() => draw(performance.now())).observe(canvas);
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; wake(); }).observe(canvas);
+    dark.addEventListener("change", () => draw(performance.now()));
+    reduce.addEventListener("change", wake);
+    draw(); wake();
+    return { draw };
+  }
+
+  return { mount, people };
 })();
 </script>
 <script>
@@ -450,33 +542,10 @@ const LOOP_DATA = {"hosts":{"elana":{"low":[0.001,0.001,0.001,0.001,0.002,0.002,
   const audios = [];
   const solo = a => audios.forEach(o => o !== a && o.pause());
 
-  // fig. 1: both voices, overlapping
-  const H = LOOP_DATA.hosts;
-  Loops.mount(document.getElementById("hero-loops"), {
-    layers: [
-      { v: H.elana, color: "--elana", x: 0.4, y: 0.5, size: 0.78 },
-      { v: H.daniel, color: "--daniel", x: 0.6, y: 0.5, size: 0.78, phase: 1.7 },
-    ],
-    strands: 22, blend: true, animate: true, alpha: 0.5, lineWidth: 1,
-  });
-
-  // the people: their loop is their sentence; play it and the loop traces along
-  document.querySelectorAll(".person").forEach(card => {
-    const id = card.dataset.id, v = H[id], a = card.querySelector("audio"), btn = card.querySelector(".hear");
-    const marks = [];
-    for (let t = 0; t < v.dur; t += 1) marks.push({ at: t / v.dur, text: `${t}s` });
-    const loop = Loops.mount(card.querySelector("canvas"), {
-      layers: [{ v, color: "--" + id, x: 0.5, y: 0.5, size: 0.8 }],
-      strands: 16, alpha: 0.55, restAlpha: 0.45,
-      grid: { rings: [0.45, 0.75], ticks: 12, tickIn: 1.02, tickOut: 1.08, labels: marks, labelAt: 1.2, labelSize: 9 },
-    });
-    audios.push(a);
-    btn.onclick = () => (a.paused ? (a.currentTime = 0, a.play()) : a.pause());
-    let frame = 0;
-    const follow = () => { loop.progress(0, a.currentTime / v.dur); frame = a.paused ? 0 : requestAnimationFrame(follow); };
-    a.addEventListener("play", () => { solo(a); card.classList.add("playing"); btn.textContent = "Stop"; loop.live(true); follow(); });
-    const stop = () => { card.classList.remove("playing"); btn.textContent = "Hear " + card.dataset.name; loop.live(false); cancelAnimationFrame(frame); loop.progress(0, null); };
-    a.addEventListener("pause", stop); a.addEventListener("ended", stop);
+  // fig. 1: two people, grown out of one loop
+  const firstEpisode = Object.values(LOOP_DATA.episodes)[0];
+  Loops.people(document.getElementById("hero-loops"), {
+    hosts: LOOP_DATA.hosts, conversation: firstEpisode, animate: true, alpha: 0.55, lineWidth: 1,
   });
 
   // episodes: the episode wrapped into a loop, filling in as you listen
