@@ -129,6 +129,23 @@ button { font: inherit; color: inherit; }
 .apps p { grid-column: 1; margin: 0; color: var(--muted); font-size: 1rem; }
 .apps .go { grid-column: 2; grid-row: 1 / span 2; font: 600 0.8125rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--ink); padding: 12px 14px; white-space: nowrap; }
 .apps .go:hover { background: var(--ink); color: var(--paper); }
+
+/* step-by-step guide, folded away until asked for */
+.steps-guide { grid-column: 1 / -1; margin-top: 8px; }
+.steps-guide summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 600 0.8125rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.steps-guide summary::-webkit-details-marker { display: none; }
+.steps-guide summary::after { content: "+"; display: grid; place-items: center; width: 22px; height: 22px; border: 2px solid var(--ink); font-size: 0.875rem; }
+.steps-guide[open] summary::after { content: "−"; background: var(--hi); color: var(--on-hi); border-color: var(--hi); }
+.steps-guide summary span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.steps { list-style: none; counter-reset: step; margin: 8px 0 0; padding: 0; display: grid; gap: 22px; }
+.steps > li { counter-increment: step; display: grid; grid-template-columns: 2.4rem 1fr; gap: 4px 12px; padding: 0; border: 0; align-items: start; }
+.steps > li::before { content: counter(step, decimal-leading-zero); font: 900 1.5rem/1 var(--display); letter-spacing: -0.04em; padding-top: 2px; }
+.steps p { grid-column: 2; margin: 0; color: var(--ink); font-size: 1.0625rem; }
+.steps b { font-family: var(--display); font-weight: 700; }
+.steps figure { grid-column: 2; margin: 10px 0 0; }
+.steps img { display: block; width: 100%; max-width: 300px; height: auto; border: 1px solid var(--rule); border-radius: 18px; }
+.steps figcaption { margin-top: 8px; color: var(--muted); font: 500 0.8125rem/1.4 var(--mono); max-width: 300px; }
+.steps .mac { color: var(--muted); }
 @media (min-width: 900px) {
   .listen { grid-template-columns: 5fr 6fr; gap: var(--gutter); }
   .listen > div:last-child { display: grid; gap: 20px; align-content: start; }
@@ -205,7 +222,22 @@ footer a { color: var(--muted); }
       <button type="button" id="copy">Copy</button>
     </div>
     <ul class="apps">
-      <li><strong>Apple Podcasts</strong><p>On iPhone or Mac. Or Library → ⋯ → Follow a Show by URL, and paste.</p><a class="go" href="podcast://djacobs7.github.io/people-in-the-loop/feed.xml">Open ↗</a></li>
+      <li><strong>Apple Podcasts</strong><p>On iPhone or Mac. Or Library → ⋯ → Follow a Show by URL, and paste.</p><a class="go" href="podcast://djacobs7.github.io/people-in-the-loop/feed.xml">Open ↗</a>
+        <details class="steps-guide" id="apple-steps">
+          <summary><span>Step by step, with pictures</span></summary>
+          <ol class="steps">
+            <li><p>Tap <b>Copy</b> above to copy the show’s link.</p></li>
+            <li><p>Open the <b>Podcasts</b> app and go to the <b>Library</b> tab at the bottom.</p></li>
+            <li><p>Tap <b>⋯</b> at the top of Library, then <b>Follow a Show by URL…</b></p>
+              <figure><img src="help/apple-follow-by-url.jpg" width="560" height="376" loading="lazy" alt="Podcasts app Library screen with a menu open: Follow a Show by URL…, New Station, Edit Library."><figcaption>The menu in Library.</figcaption></figure></li>
+            <li><p>Tap the box, choose <b>Paste</b>, then tap <b>Follow</b>.</p></li>
+            <li><p>The show is now in your Library. The <b>✓</b> at the top means you’re following it. Tap <b>▶&#xFE0E;</b> to start.</p>
+              <figure><img src="help/apple-show-page.jpg" width="560" height="752" loading="lazy" alt="The People in the Loop show page in Apple Podcasts, with a check mark at the top, the cover, and a play button showing 18 minutes."><figcaption>What you’ll see. The cover may look different while the app catches up.</figcaption></figure></li>
+            <li><p>Stop whenever you like. The app keeps your place, and new episodes show up here on their own.</p></li>
+          </ol>
+          <p class="mac" style="margin:18px 0 0;font-size:1rem">On a Mac: open Podcasts, choose <b>File → Follow a Show by URL…</b>, paste, and click Follow.</p>
+        </details>
+      </li>
       <li><strong>Overcast</strong><p>Or tap + → Add URL, and paste.</p><a class="go" href="overcast://x-callback-url/add?url=https://djacobs7.github.io/people-in-the-loop/feed.xml">Open ↗</a></li>
       <li><strong>Pocket Casts</strong><p>Paste the link into the search box.</p></li>
       <li><strong>Anything else</strong><p>Look for “Add by URL” or “Add RSS feed”, and paste.</p></li>
@@ -321,6 +353,11 @@ footer a { color: var(--muted); }
     draw(saved > 15 && saved < total - 20 ? saved : 0);
     if (saved > 15 && saved < total - 20) pending = saved;
   });
+
+  // a link to …/#apple-steps opens the guide straight away
+  const guide = document.getElementById("apple-steps");
+  const openGuide = () => { if (location.hash === "#apple-steps") { guide.open = true; guide.scrollIntoView(); } };
+  openGuide(); addEventListener("hashchange", openGuide);
 
   const copy = document.getElementById("copy"), input = document.getElementById("feed-url");
   copy.onclick = async () => {
