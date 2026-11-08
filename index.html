@@ -108,7 +108,7 @@ button { font: inherit; color: inherit; }
 /* episodes */
 .section-title { font: 400 clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem)/1 var(--serif); margin: 0 0 8px; }
 .section-title i { font-size: 0.8em; }
-.ep { display: grid; gap: 22px 48px; padding: 24px 0 8px; }
+.ep { display: grid; gap: 22px 48px; padding: 24px 0 8px; scroll-margin-top: 16px; }
 .ep-head { margin: 0 0 6px; }
 .ep h3 { font: 400 clamp(2.25rem, 1.5rem + 3vw, 3.75rem)/1 var(--serif); margin: 0 0 18px; text-wrap: balance; }
 .ep .desc { margin: 0; max-width: 34em; text-wrap: pretty; }
@@ -201,7 +201,7 @@ button { font: inherit; color: inherit; }
 
 <section aria-labelledby="episodes">
   <h2 class="section-title" id="episodes">Episodes</h2>
-  <article class="ep player" data-id="ep2" data-duration="968.16"
+  <article id="ep2" class="ep player" data-id="ep2" data-duration="968.16"
      data-title="Where do app design and mental health meet?" data-artist="Elana &amp; Daniel" data-album="People in the Loop">
   <div>
     <div class="ring-wrap" role="slider" tabindex="0" aria-label="Position in episode 2" aria-valuemin="0" aria-valuemax="968" aria-valuenow="0">
@@ -228,7 +228,7 @@ button { font: inherit; color: inherit; }
     <p class="desc">Daniel is building an app and has to figure out how to keep people coming back. Elana sees the other side of that in her practice: clients with ADHD or depression who struggle to turn it off, and couples where one person&#x27;s game is crowding out the dishes. They compare notes on the tricks of the trade (early &quot;aha&quot; moments, onboarding surveys, notifications, variable rewards), what the metrics can&#x27;t see, where regulation belongs (fitness apps are vegetables, the rest is &quot;video candy&quot;), what a kinder app would do differently, and why AI might let people build software that actually serves them.</p>
   </div>
 </article>
-<article class="ep player" data-id="ep1" data-duration="1085.35"
+<article id="ep1" class="ep player" data-id="ep1" data-duration="1085.35"
      data-title="Can AI be your therapist?" data-artist="Elana &amp; Daniel" data-album="People in the Loop">
   <div>
     <div class="ring-wrap" role="slider" tabindex="0" aria-label="Position in episode 1" aria-valuemin="0" aria-valuemax="1085" aria-valuenow="0">
