@@ -17,6 +17,16 @@
       "description": "A therapist and an AI developer, friends since childhood, argue about whether AI is coming for mental health. Elana explains where chatbots genuinely help (logic-based work like CBT, practice between sessions, people too nervous to see a human) and where they're dangerous: they agree with you when a good therapist would call you out, and they miss real risk. Daniel weighs in from the builder's side on training, privacy (\"everything leaks to a megacorporation\"), and what we owe kids. They end on what AI may never do: be a human who cares about you.",
       "quote": "AI, at least right now, will fall into that trap of agreeing… whereas a good human therapist might be able to [[call you out]] on that.",
       "quoteBy": "Elana"
+    },
+    {
+      "number": 2,
+      "title": "Where do app design and mental health meet?",
+      "source": "exports/ep2-where-do-app-design-and-mental-health-meet-final.mp3",
+      "file": "ep2-where-do-app-design-and-mental-health-meet.mp3",
+      "date": "2026-11-08",
+      "description": "Daniel is building an app and has to figure out how to keep people coming back. Elana sees the other side of that in her practice: clients with ADHD or depression who struggle to turn it off, and couples where one person's game is crowding out the dishes. They compare notes on the tricks of the trade (early \"aha\" moments, onboarding surveys, notifications, variable rewards), what the metrics can't see, where regulation belongs (fitness apps are vegetables, the rest is \"video candy\"), what a kinder app would do differently, and why AI might let people build software that actually serves them.",
+      "quote": "When you're in the dessert industry selling [[video candy]], everyone's going to download and watch that forever.",
+      "quoteBy": "Daniel"
     }
   ],
   "hosts": [
