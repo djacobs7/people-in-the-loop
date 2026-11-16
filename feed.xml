@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>People in the Loop</title>
-    <link>https://djacobs7.github.io/people-in-the-loop/</link>
-    <atom:link href="https://djacobs7.github.io/people-in-the-loop/feed.xml" rel="self" type="application/rss+xml"/>
+    <link>https://peopleintheloop.show/</link>
+    <atom:link href="https://peopleintheloop.show/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Elana, a therapist, and Daniel, an AI developer, have known each other since they were three. Together they explore how AI is changing mental health, and what those changes mean for how we care for ourselves and each other.</description>
     <language>en-us</language>
     <itunes:author>Elana &amp; Daniel</itunes:author>
     <itunes:owner><itunes:name>Elana &amp; Daniel</itunes:name><itunes:email>peopleintheloop@gmail.com</itunes:email></itunes:owner>
-    <itunes:image href="https://djacobs7.github.io/people-in-the-loop/cover.jpg"/>
-    <image><url>https://djacobs7.github.io/people-in-the-loop/cover.jpg</url><title>People in the Loop</title><link>https://djacobs7.github.io/people-in-the-loop/</link></image>
+    <itunes:image href="https://peopleintheloop.show/cover.jpg"/>
+    <image><url>https://peopleintheloop.show/cover.jpg</url><title>People in the Loop</title><link>https://peopleintheloop.show/</link></image>
     <itunes:category text="Health &amp; Fitness"><itunes:category text="Mental Health"/></itunes:category>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
@@ -17,7 +17,7 @@
     <item>
       <title>Where do app design and mental health meet?</title>
       <description>Daniel is building an app and has to figure out how to keep people coming back. Elana sees the other side of that in her practice: clients with ADHD or depression who struggle to turn it off, and couples where one person's game is crowding out the dishes. They compare notes on the tricks of the trade (early "aha" moments, onboarding surveys, notifications, variable rewards), what the metrics can't see, where regulation belongs (fitness apps are vegetables, the rest is "video candy"), what a kinder app would do differently, and why AI might let people build software that actually serves them.</description>
-      <enclosure url="https://djacobs7.github.io/people-in-the-loop/episodes/ep2-where-do-app-design-and-mental-health-meet-v2.mp3" length="19364383" type="audio/mpeg"/>
+      <enclosure url="https://peopleintheloop.show/episodes/ep2-where-do-app-design-and-mental-health-meet-v2.mp3" length="19364383" type="audio/mpeg"/>
       <guid isPermaLink="false">people-in-the-loop-ep2</guid>
       <pubDate>Sun, 08 Nov 2026 12:00:00 +0000</pubDate>
       <itunes:episode>2</itunes:episode>
@@ -27,7 +27,7 @@
     <item>
       <title>Can AI be your therapist?</title>
       <description>A therapist and an AI developer, friends since childhood, argue about whether AI is coming for mental health. Elana explains where chatbots genuinely help (logic-based work like CBT, practice between sessions, people too nervous to see a human) and where they're dangerous: they agree with you when a good therapist would call you out, and they miss real risk. Daniel weighs in from the builder's side on training, privacy ("everything leaks to a megacorporation"), and what we owe kids. They end on what AI may never do: be a human who cares about you.</description>
-      <enclosure url="https://djacobs7.github.io/people-in-the-loop/episodes/ep1-can-ai-be-your-therapist-v2.mp3" length="21708665" type="audio/mpeg"/>
+      <enclosure url="https://peopleintheloop.show/episodes/ep1-can-ai-be-your-therapist-v2.mp3" length="21708665" type="audio/mpeg"/>
       <guid isPermaLink="false">people-in-the-loop-ep1</guid>
       <pubDate>Fri, 06 Nov 2026 12:00:00 +0000</pubDate>
       <itunes:episode>1</itunes:episode>
