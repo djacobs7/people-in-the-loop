@@ -15,6 +15,26 @@
     <itunes:type>episodic</itunes:type>
     <itunes:block>Yes</itunes:block>
     <item>
+      <title>Can a chatbot be your friend?</title>
+      <description>Tens of millions of people use AI chatbots for friendship and romance each month, and more than half of them are under 24. Elana walks through the research: a little use can ease loneliness, a lot of it makes loneliness worse, and frictionless praise may be "de-skilling" us for real relationships. Then they try a companion app live, meet Lucky the camp counselor, and immediately pick a fight with him. His answers are what you'd want someone to say, from someone with no needs of his own. Daniel reads posts from people mourning a partner who changed when the model was updated, and they get into AI weddings, what happens when your empathetic companion can also run your Gmail, and the first attempts at regulation.</description>
+      <enclosure url="https://peopleintheloop.show/episodes/ep4-can-a-chatbot-be-your-friend.mp3" length="24923729" type="audio/mpeg"/>
+      <guid isPermaLink="false">people-in-the-loop-ep4</guid>
+      <pubDate>Fri, 27 Nov 2026 12:00:00 +0000</pubDate>
+      <itunes:episode>4</itunes:episode>
+      <itunes:duration>0:20:46</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Would you recommend recreating a lost loved one?</title>
+      <description>Voice and video models can now recreate someone's likeness, so what does it mean to memorialize a person? Elana brings what she hears in grief counseling: people miss the mundane moments most, like calling mom after the first day of seventh grade. Daniel explains what an AI avatar can and can't capture (the voice and the facts, yes; the mind, not really), and why ours may be among the first generations that can be re-voiced a thousand years from now. They talk through the best case (a conversation with a great-grandfather you never met), the unhealthy one (an AI stand-in for an ex who is very much alive), what each of us might want to leave behind, and how a machine that turns old photos into a movie could quietly rewrite our memories.</description>
+      <enclosure url="https://peopleintheloop.show/episodes/ep3-would-you-recommend-recreating-a-lost-loved-one.mp3" length="23886448" type="audio/mpeg"/>
+      <guid isPermaLink="false">people-in-the-loop-ep3</guid>
+      <pubDate>Thu, 26 Nov 2026 12:00:00 +0000</pubDate>
+      <itunes:episode>3</itunes:episode>
+      <itunes:duration>0:19:54</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
       <title>Where do app design and mental health meet?</title>
       <description>Daniel is building an app and has to figure out how to keep people coming back. Elana sees the other side of that in her practice: clients with ADHD or depression who struggle to turn it off, and couples where one person's game is crowding out the dishes. They compare notes on the tricks of the trade (early "aha" moments, onboarding surveys, notifications, variable rewards), what the metrics can't see, where regulation belongs (fitness apps are vegetables, the rest is "video candy"), what a kinder app would do differently, and why AI might let people build software that actually serves them.</description>
       <enclosure url="https://peopleintheloop.show/episodes/ep2-where-do-app-design-and-mental-health-meet-v3.mp3" length="18948703" type="audio/mpeg"/>
